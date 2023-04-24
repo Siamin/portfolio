@@ -30,21 +30,23 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget desktopDesplay() => Wrap(
-    children: [Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: body(),
-            ),
-            Container(
-              height: size.height * 0.1,
-              color: ColorApp().DarkColor,
-            ),
-          ],
-        )],
-  );
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: body(),
+              ),
+              Container(
+                height: size.height * 0.1,
+                color: ColorApp().DarkColor,
+              ),
+            ],
+          )
+        ],
+      );
 
-  Widget notDesktopDesplay() => ListView(
+  Widget notDesktopDesplay() => Column(
         children: [
           imageBody(),
           textBody(),
@@ -81,20 +83,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 text: "Hello, i’m",
                 fontSize: size.width * 0.04,
                 textColor: ColorApp().whiteColor,
-                width: size.width,
               ),
               generatText(
                 text: "Amin Syahi",
                 fontSize: size.width * 0.08,
                 textColor: ColorApp().whiteColor,
-                width: size.width,
+
               ),
               generatText(
                 text:
                     "Freelance UI designer, Fullstack developer, & Data Miner. I create seamless web experiences for end-users.",
                 fontSize: size.width * 0.014,
                 textColor: ColorApp().whiteColor,
-                width: size.width,
+
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -146,15 +147,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       );
 
-  Widget generatText(
-          {required String text,
-          double fontSize = 14.0,
-          required Color textColor,
-          double? width}) =>
+  Widget generatText({
+    required String text,
+    double fontSize = 14.0,
+    required Color textColor,
+  }) =>
       Padding(
-        padding: EdgeInsets.all((size.width+size.height)*0.004),
+        padding: EdgeInsets.all((size.width + size.height) * 0.004),
         child: Container(
-          width: width! * 0.5,
+          width: size.width * 0.5,
           child: Text(
             text,
             style: TextStyle(

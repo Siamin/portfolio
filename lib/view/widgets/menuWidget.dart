@@ -22,7 +22,6 @@ class _MenuWidgetState extends State<MenuWidget> {
   int flex = 1;
   late Size size;
 
-
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -40,7 +39,7 @@ class _MenuWidgetState extends State<MenuWidget> {
 
   Widget desktopMenu() => Container(
         color: ColorApp().DarkColor,
-        height: size.height*0.06,
+        height: size.height * 0.06,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: menuBody(),
@@ -54,9 +53,10 @@ class _MenuWidgetState extends State<MenuWidget> {
         ),
       );
 
-  Widget phoneMenu() => Drawer(backgroundColor: ColorApp().DarkColor,child: tabletMenu(),);
-
-
+  Widget phoneMenu() => Drawer(
+        backgroundColor: ColorApp().DarkColor,
+        child: tabletMenu(),
+      );
 
   List<Widget> menuBody() => [
         Expanded(
@@ -68,7 +68,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                 "Amin Syahi",
                 style: TextStyle(
                     color: ColorApp().PrimaryColor,
-                    fontSize: 24,
+                    fontSize: widget.isTablet ? 16 : 24,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -79,8 +79,6 @@ class _MenuWidgetState extends State<MenuWidget> {
           child: widget.isDesktop ? menuDesktopItems() : menuTabletItems(),
         ),
       ];
-
-
 
   Widget menuDesktopItems() => Padding(
         padding: EdgeInsets.symmetric(horizontal: (width / 2) * 0.22),
@@ -94,8 +92,6 @@ class _MenuWidgetState extends State<MenuWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: menuItems(),
       );
-
-
 
   List<Widget> menuItems() => [
         Text(
