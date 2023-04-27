@@ -6,6 +6,7 @@ import 'package:portfolio/models/serviceModel.dart';
 import 'package:portfolio/models/skillModel.dart';
 import 'package:portfolio/view/widgets/serviecWidget.dart';
 import 'package:portfolio/view/widgets/skillWidget.dart';
+import 'package:portfolio/view/widgets/textWidget.dart';
 
 class AboutMeScreen extends StatefulWidget {
   final bool isTablet;
@@ -95,14 +96,14 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                generatText(
+                TextWidget(
                   text: "About me:",
                   textColor: ColorApp().PrimaryColor,
                   fontSize: sumScreen * 0.02,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: generatText(
+                  child: TextWidget(
                     text:
                         "Hi, my name is Jayjay Dinero Dinero, i am a Fullstack web developer, UI designer, and Mobile developer. I jhave honed my skills in Web Development and advance i have core understanding of advance UI design principles.Here are the major skiills i have. ",
                     textColor: ColorApp().whiteColor,
@@ -118,7 +119,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                     children: [
                       Expanded(
                         flex: 1,
-                        child: generatText(
+                        child: TextWidget(
                           text: "5+",
                           textColor: ColorApp().PrimaryColor,
                           fontSize: sumScreen * 0.04,
@@ -126,7 +127,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       ),
                       Expanded(
                         flex: 7,
-                        child: generatText(
+                        child: TextWidget(
                           text:
                               "Years of experience. Specialised in building apps, while ensuring a seamless web experience for end users.",
                           textColor: ColorApp().whiteColor,
@@ -143,7 +144,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                 SizedBox(
                   height: size.height * 0.03,
                 ),
-                generatText(
+                TextWidget(
                   text: "The services i offer:",
                   textColor: ColorApp().PrimaryColor,
                   fontSize: size.width * 0.02,
@@ -161,21 +162,5 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
     );
   }
 
-  Widget generatText({
-    required String text,
-    double fontSize = 14.0,
-    required Color textColor,
-  }) =>
-      Container(
-        width: size.width * 0.95,
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: fontSize,
-            color: textColor,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.start,
-        ),
-      );
+
 }

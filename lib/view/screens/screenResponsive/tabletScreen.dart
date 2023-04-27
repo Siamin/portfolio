@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/view/screens/aboutMeScreen.dart';
 import 'package:portfolio/view/screens/homeScreen.dart';
+import 'package:portfolio/view/screens/projectsScreen.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
 
 class HomeTabletScreen extends StatelessWidget {
@@ -29,7 +30,12 @@ class HomeTabletScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: AboutMeScreen(isTablet: true,),
+                  child: AboutMeScreen(
+                    isTablet: true,
+                  ),
+                ),
+                ProjectsScreen(
+                  isTablet: true,
                 ),
               ],
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/view/screens/aboutMeScreen.dart';
 import 'package:portfolio/view/screens/homeScreen.dart';
+import 'package:portfolio/view/screens/projectsScreen.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
 
 class HomeDesktopScreen extends StatefulWidget {
@@ -32,6 +33,9 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
                   width: size.width * 0.6,
                 ),
                 AboutMeScreen(
+                  isDesktop: true,
+                ),
+                ProjectsScreen(
                   isDesktop: true,
                 ),
               ],

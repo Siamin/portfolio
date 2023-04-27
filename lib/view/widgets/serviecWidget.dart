@@ -30,7 +30,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
     divisionColum = widget.isDesktop ? 3 : 2;
 
     return  Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: GridView.builder(
           itemCount: widget.serviceModel.length,
           shrinkWrap: true,
@@ -60,7 +60,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(sumScreen * 0.006),
+                    padding: EdgeInsets.all(sumScreen * 0.004),
                     child: Image.asset(
                       model.getPath(),
                       height: sumScreen * 0.025,
@@ -68,7 +68,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(sumScreen * 0.008),
+                    padding: EdgeInsets.all(sumScreen * 0.006),
                     child: Text(
                       model.title,
                       style: TextStyle(
@@ -76,7 +76,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(sumScreen * 0.008),
+                    padding: EdgeInsets.all(sumScreen * 0.006),
                     child: Text(
                       model.description,
                       style: TextStyle(

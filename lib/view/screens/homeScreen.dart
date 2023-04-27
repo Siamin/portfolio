@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/view/widgets/ImageWidget.dart';
+import 'package:portfolio/view/widgets/outlinedButtonWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   final double height, width;
@@ -24,12 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
+    size = MediaQuery
+        .of(context)
+        .size;
 
     return widget.isDesktop ? desktopDesplay() : notDesktopDesplay();
   }
 
-  Widget desktopDesplay() => Wrap(
+  Widget desktopDesplay() =>
+      Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,14 +50,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       );
 
-  Widget notDesktopDesplay() => Column(
+  Widget notDesktopDesplay() =>
+      Column(
         children: [
           imageBody(),
           textBody(),
         ],
       );
 
-  List<Widget> body() => [
+  List<Widget> body() =>
+      [
         Expanded(
           flex: flex,
           child: textBody(),
@@ -64,7 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ];
 
-  Widget imageBody() => Center(
+  Widget imageBody() =>
+      Center(
         child: ImageWidget(
           pathAssets: "assets/images/my_image.png",
           height: widget.height,
@@ -74,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
 
-  Widget textBody() => Wrap(
+  Widget textBody() =>
+      Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               generatText(
                 text:
-                    "Freelance UI designer, Fullstack developer, & Data Miner. I create seamless web experiences for end-users.",
+                "Freelance UI designer, Fullstack developer, & Data Miner. I create seamless web experiences for end-users.",
                 fontSize: size.width * 0.014,
                 textColor: ColorApp().whiteColor,
 
@@ -102,43 +110,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton.icon(
-                      label: Text(
-                        'About me',
-                        style: TextStyle(
-                          fontSize: size.width * 0.014,
-                        ),
-                      ),
-                      onPressed: () {},
-                      icon: Icon(
-                        // <-- Icon
-                        Icons.person,
-                        size: size.width * 0.014,
-                      ),
-                      // <-- Text
-                    ),
-                    OutlinedButton.icon(
-                      // <-- OutlinedButton
-                      style: OutlinedButton.styleFrom(
+                    OutlinedButtonWidget(
+                        backgroundColor: ColorApp().PrimaryColor,
+                        textColor: ColorApp().whiteColor,
+                        iconSize: size.width * 0.014,
+                        icon: Icons.person,
+                        textSize: size.width * 0.014,
+                        text: 'About me'),
+
+                    OutlinedButtonWidget(
                         backgroundColor: ColorApp().transparent,
-                        primary: ColorApp().whiteColor,
-                        side: BorderSide(
-                          color: ColorApp().PrimaryColor,
-                          width: 1,
-                        ),
-                      ),
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.remove_red_eye,
-                        size: size.width * 0.014,
-                      ),
-                      label: Text(
-                        'Projects',
-                        style: TextStyle(
-                          fontSize: size.width * 0.014,
-                        ),
-                      ),
-                    ),
+                        textColor: ColorApp().whiteColor,
+                        borderColor: ColorApp().PrimaryColor,
+                        borderWidth: 1,
+                        iconSize: size.width * 0.014,
+                        icon: Icons.remove_red_eye,
+                        textSize: size.width * 0.014,
+                        text: 'Projects'),
                   ],
                 ),
               ),
