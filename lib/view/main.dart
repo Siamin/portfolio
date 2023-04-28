@@ -28,21 +28,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: ColorApp().materialApp(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MyPage extends StatefulWidget {
+  const MyPage({super.key,});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyPage> createState() => _MyPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyPageState extends State<MyPage> {
   late DataModel dataModel;
 
   Future<void> getData() async {
