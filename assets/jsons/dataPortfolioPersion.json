@@ -1,3 +1,111 @@
 {
 
+  "name": "امین",
+  "family": "سیاهی",
+  "fullName": "امین سیاهی",
+  "descriptionMe": "طراح UI مستقل، توسعه دهنده Fullstack و Data Miner. من تجربیات وب یکپارچه را برای کاربران نهایی ایجاد می کنم.",
+  "aboutMe": "سلام، من امین سیاهی هستم، من یک توسعه دهنده وب Fullstack، طراح رابط کاربری و توسعه دهنده موبایل هستم. من مهارت های خود را در توسعه وب تقویت کرده و پیشرفت کرده ام، درک اصلی از اصول طراحی رابط کاربری پیشرفته دارم. \nدر اینجا مهارت های اصلی من وجود دارد.",
+  "howYearsExperience": 5,
+  "descriptionExperience": "سال ها تجربه. متخصص در ساخت برنامه ها، در حالی که اطمینان از یکپارچگی\nتجربه وب برای کاربران نهایی",
+  "experiences": [
+    {
+      "icon": "uiux",
+      "title": "UI & UX",
+      "subTitle": "DESIGNING"
+    },
+    {
+      "icon": "developer",
+      "title": "WEB",
+      "subTitle": "DEVELOPMENT"
+    },
+    {
+      "icon": "android",
+      "title": "MOBILE",
+      "subTitle": "DEVELOPMENT"
+    },
+    {
+      "icon": "python",
+      "title": "WEB SCRAPING",
+      "subTitle": "WITH PYTHON"
+    }
+  ],
+  "services": [
+    {
+      "title": "UI & UX DESIGNING",
+      "description": "من رابط های وب زیبایی را با Figma و Adobe XD طراحی می کنم",
+      "iconName": "uiux"
+    },
+    {
+      "title": "WEB DEVELOPMENT",
+      "description": "من رابط های زیبایی را با HTML، CSS و جاوا اسکریپت ساده و همچنین فریم ورک هایی مانند Angular و ReactJS ایجاد می کنم.",
+      "iconName": "developer"
+    },
+    {
+      "title": "MOBILE DEVELOPMENT",
+      "description": "من یک توسعه دهنده متخصص موبایل هستم. من تجربه استفاده از Flutter و React Native را دارم.",
+      "iconName": "android"
+    },
+    {
+      "title": "VERSION CONTROL",
+      "description": "من می توانم از سیستم های کنترل نسخه به خوبی استفاده کنم، و Git و Mercurial ابزارهای مورد استفاده من هستند..",
+      "iconName": "git"
+    },
+    {
+      "title": "NPM AND NODEJS",
+      "description": "من درک اصلی از NPM دارم. من همچنین می توانم برنامه های کاربردی عمومی را با NodeJS توسعه دهم",
+      "iconName": "js"
+    },
+    {
+      "title": "WEB SCRAPING",
+      "description": "من می توانم محتوا و داده ها را از اینترنت جمع آوری کنم و در صورت نیاز دستکاری و تجزیه و تحلیل کنم.",
+      "iconName": "web"
+    }
+  ],
+  "featured": [
+    {
+      "title": "TWINDER",
+      "subTitle": "یک برنامه جغرافیایی زنده برای یافتن توییت ها و کاربران توییتر در اطراف شما.",
+      "description": "",
+      "imageAddress": [
+        "map.png"
+      ],
+      "websitLink": "",
+      "gitRepoLink": ""
+    },
+    {
+      "title": "LIVENTS",
+      "subTitle": "یک برنامه پخش ویدئو با موقعیت جغرافیایی زنده، برای پخش رویدادها.",
+      "description": "",
+      "imageAddress": [
+        "live.png"
+      ],
+      "websitLink": "",
+      "gitRepoLink": ""
+    },
+    {
+      "title": "MOOVE",
+      "subTitle": "برنامه موبایل برای رزرو تحویل فوری و تحویل در شهرهای بزرگ.",
+      "description": "",
+      "imageAddress": [
+        "move.png"
+      ],
+      "websitLink": "",
+      "gitRepoLink": ""
+    }
+  ],
+  "socialMedia": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "mail": "",
+    "github": ""
+  },
+  "footerLinks": [
+    "@2022 Jayjay Dinero Dinero",
+    "Fullstack Developer",
+    "UI Designer",
+    "Data Analyst",
+    "Designed by @ernestechie"
+  ]
+
 }

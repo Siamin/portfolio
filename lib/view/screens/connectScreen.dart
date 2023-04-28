@@ -34,10 +34,14 @@ class _ConnectScreenState extends State<ConnectScreen> {
     size = MediaQuery.of(context).size;
     sumScreen =
         (size.height + (widget.isTablet ? size.width * 0.3 : size.width));
-    return Container(
-      width: size.width * (widget.isTablet ? 0.75 : 1),
-      height: size.height * (widget.isPhone ? 1 : 0.8),
-      child: widget.isDesktop ? getRowScreen() : getColumnScreen(),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+      child: Container(
+        alignment: Alignment.center,
+        width: size.width * (widget.isTablet ? 0.75 : 1),
+        height: size.height * (widget.isPhone ? 1 : 0.6),
+        child: widget.isDesktop ? getRowScreen() : getColumnScreen(),
+      ),
     );
   }
 
@@ -63,7 +67,8 @@ class _ConnectScreenState extends State<ConnectScreen> {
             child: TextWidget(
               text: "Connect with me:",
               textColor: ColorApp().PrimaryColor,
-              fontSize: sumScreen * 0.02,
+              fontSize: sumScreen * (widget.isDesktop ? 0.02 : 0.023),
+              textAlign: widget.isDesktop ? TextAlign.start : TextAlign.center,
             ),
           ),
           Padding(
@@ -71,53 +76,75 @@ class _ConnectScreenState extends State<ConnectScreen> {
             child: TextWidget(
               text: "Satisfied with me? Please contact me",
               textColor: ColorApp().whiteColor,
-              fontSize: sumScreen * 0.0085,
+              fontSize: sumScreen * (widget.isDesktop ? 0.0095 : 0.01),
+              textAlign: widget.isDesktop ? TextAlign.start : TextAlign.center,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SocialMediaWidget(model: socialMediaModel,isDesktop: widget.isDesktop,),
+            child: SocialMediaWidget(
+              model: socialMediaModel,
+              isDesktop: widget.isDesktop,
+              alignment:
+                  widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+            ),
           ),
         ],
       );
 
   Widget getSendMessage() => Expanded(
         flex: 1,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Wrap(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextWidget(
-                text: "Contact me, let’s make magic together",
-                textColor: ColorApp().whiteColor,
-                fontSize: sumScreen * 0.0085,
-              ),
-            ),
-            TextFieldWidget(
-              labelText: "Name",
-              width: size.width * 0.3,
-            ),
-            TextFieldWidget(
-              labelText: "Email",
-              width: size.width * 0.3,
-            ),
-            TextFieldWidget(
-              labelText: "Message",
-              maxLines: 4,
-              width: size.width * 0.3,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ButtonWidget(
-                  backgroundColor: ColorApp().PrimaryColor,
-                  textColor: ColorApp().whiteColor,
-                  textSize: 14,
-                  text: "Send",
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextWidget(
+                    text: "Contact me, let’s make magic together",
+                    textColor: ColorApp().whiteColor,
+                    fontSize: sumScreen * (widget.isDesktop ? 0.0095 : 0.01),
+                    textAlign:
+                        widget.isDesktop ? TextAlign.start : TextAlign.center,
+                  ),
                 ),
-              ),
+                TextFieldWidget(
+                  labelText: "Name",
+                  width: size.width * (widget.isDesktop ? 0.3 : 0.5),
+                  alignment:
+                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                ),
+                TextFieldWidget(
+                  labelText: "Email",
+                  width: size.width * (widget.isDesktop ? 0.3 : 0.5),
+                  alignment:
+                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                ),
+                TextFieldWidget(
+                  labelText: "Message",
+                  maxLines: 4,
+                  width: size.width * (widget.isDesktop ? 0.3 : 0.5),
+                  alignment:
+                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                ),
+                Align(
+                  alignment:
+                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ButtonWidget(
+                      backgroundColor: ColorApp().PrimaryColor,
+                      textColor: ColorApp().whiteColor,
+                      textSize: 14,
+                      text: "Send",
+                      onPressed: () {
+                        print("send onpress");
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

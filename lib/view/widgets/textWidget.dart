@@ -5,14 +5,16 @@ class TextWidget extends StatefulWidget {
   final fontSize;
   final Color textColor;
   final TextAlign textAlign;
+  final double? width;
 
-  const TextWidget(
-      {Key? key,
-      required this.text,
-      this.fontSize = 14.0,
-      required this.textColor, this.textAlign=TextAlign.start,
-      })
-      : super(key: key);
+  const TextWidget({
+    Key? key,
+    required this.text,
+    this.fontSize = 14.0,
+    required this.textColor,
+    this.textAlign = TextAlign.start,
+    this.width,
+  }) : super(key: key);
 
   @override
   State<TextWidget> createState() => _TextWidgetState();
@@ -23,7 +25,7 @@ class _TextWidgetState extends State<TextWidget> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      width: size.width * 0.95,
+      width: widget.width ?? size.width * 0.95,
       child: Text(
         widget.text,
         style: TextStyle(

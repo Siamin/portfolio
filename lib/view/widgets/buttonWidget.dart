@@ -6,6 +6,8 @@ class ButtonWidget extends StatefulWidget {
   final double borderWidth;
   final double textSize;
   final String text;
+  final VoidCallback? onPressed;
+  final Alignment alignment;
 
   const ButtonWidget({
     Key? key,
@@ -15,6 +17,8 @@ class ButtonWidget extends StatefulWidget {
     this.borderWidth = 0.0,
     required this.textSize,
     required this.text,
+    this.alignment = Alignment.centerLeft,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -24,22 +28,27 @@ class ButtonWidget extends StatefulWidget {
 class _ButtonWidgetState extends State<ButtonWidget> {
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: () {},
-      child: Text(
-        widget.text,
-        style: TextStyle(
-          fontSize: widget.textSize,
-        ),
-      ),
-      style: OutlinedButton.styleFrom(
-        backgroundColor: widget.backgroundColor,
-        primary: widget.textColor,
-        side: BorderSide(
-          color: widget.borderColor,
-          width: widget.borderWidth!,
-        ),
-      ),
+    return Wrap(
+      children: [
+        OutlinedButton(
+          onPressed: widget.onPressed,
+          child: Text(
+            widget.text,
+            style: TextStyle(
+              fontSize: widget.textSize,
+              color: widget.textColor,
+            ),
+          ),
+          style: OutlinedButton.styleFrom(
+            backgroundColor: widget.backgroundColor,
+            primary: widget.textColor,
+            side: BorderSide(
+              color: widget.borderColor,
+              width: widget.borderWidth!,
+            ),
+          ),
+        )
+      ],
     );
   }
 }

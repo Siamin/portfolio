@@ -1,3 +1,109 @@
 {
-
+  "name": "amin",
+  "family": "syahi",
+  "fullName": "Amin Syahi",
+  "descriptionMe": "Freelance UI designer, Fullstack developer, & Data Miner. I create seamless web experiences for end-users.",
+  "aboutMe": "Hi, my name is Jayjay Dinero Dinero, i am a Fullstack web developer, UI designer, and Mobile developer. I jhave honed my skills in Web Development and advance i have core understanding of advance UI design principles. \nHere are the major skiills i have. ",
+  "howYearsExperience": 5,
+  "descriptionExperience": "Years of experience. Specialised in building apps, while ensuring a seamless\nweb experience for end users.",
+  "experiences": [
+    {
+      "icon": "uiux",
+      "title": "UI & UX",
+      "subTitle": "DESIGNING"
+    },
+    {
+      "icon": "developer",
+      "title": "WEB",
+      "subTitle": "DEVELOPMENT"
+    },
+    {
+      "icon": "android",
+      "title": "MOBILE",
+      "subTitle": "DEVELOPMENT"
+    },
+    {
+      "icon": "python",
+      "title": "WEB SCRAPING",
+      "subTitle": "WITH PYTHON"
+    }
+  ],
+  "services": [
+    {
+      "title": "UI & UX DESIGNING",
+      "description": "I design beautiful web iterfaces with Figma and Adove XD",
+      "iconName": "uiux.png"
+    },
+    {
+      "title": "WEB DEVELOPMENT",
+      "description": "I create beautiful iterfaces with simple HTML, CSS, & JavaScript and also frameworks like Angular and ReactJS",
+      "iconName": "developer"
+    },
+    {
+      "title": "MOBILE DEVELOPMENT",
+      "description": "I am an expert mobile developer. I have experience using Flutter and React Native.",
+      "iconName": "android"
+    },
+    {
+      "title": "VERSION CONTROL",
+      "description": "I can use version control systems well, and Git & Mecurial are my go-to tool.",
+      "iconName": "gitxs"
+    },
+    {
+      "title": "NPM AND NODEJS",
+      "description": "I have core understanding of NPM. I can also develop general purpose applications with NodeJS",
+      "iconName": "js"
+    },
+    {
+      "title": "WEB SCRAPING",
+      "description": "I can collect content and data from the internet then manipulate and analyze as needed.",
+      "iconName": "web"
+    }
+  ],
+  "featured": [
+    {
+      "title": "TWINDER",
+      "subTitle": "A live Geolocation app for finding tweets and twitter users around you.",
+      "description": "",
+      "imageAddress": [
+        "map.png"
+      ],
+      "websitLink": "",
+      "gitRepoLink": ""
+    },
+    {
+      "title": "LIVENTS",
+      "subTitle": "A video streaming app with live Geolocation, for streaming events.",
+      "description": "",
+      "imageAddress": [
+        "live.png"
+      ],
+      "websitLink": "",
+      "gitRepoLink": ""
+    },
+    {
+      "title": "MOOVE",
+      "subTitle": "Mobile app for booking instant pickup & dropoff accross major cities.",
+      "description": "",
+      "imageAddress": [
+        "move.png"
+      ],
+      "websitLink": "",
+      "gitRepoLink": ""
+    }
+  ],
+  "socialMedia": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "mail": "",
+    "github": ""
+  },
+  "footerLinks": [
+    "@2022 Jayjay Dinero Dinero",
+    "Fullstack Developer",
+    "UI Designer",
+    "Data Analyst",
+    "Designed by @ernestechie"
+  ]
 }
