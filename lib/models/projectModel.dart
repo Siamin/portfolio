@@ -18,4 +18,12 @@ class ProjectModel {
 
   getPath(int index) => 'assets/images/${imageAddress[index]}';
 
+  factory ProjectModel.fromJson(Map<String, dynamic> json) => ProjectModel(
+        title: json["title"],
+        subTitle: json["subTitle"],
+        description: json["description"],
+        imageAddress: List<String>.from(json["imageAddress"].map((x) => x)),
+        websitLink: json["websitLink"],
+        gitRepoLink: json["gitRepoLink"],
+      );
 }

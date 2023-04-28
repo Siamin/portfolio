@@ -23,19 +23,19 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
   late Size size;
   late double sumScreen;
   late List<SkillModel> skillModel = [
-    SkillModel(title: "UI & UX", subTitle: "DESIGNING", iconName: "uiux.png"),
+    SkillModel(title: "UI & UX", subTitle: "DESIGNING", iconName: "uiux"),
     SkillModel(
-        title: "WEB", subTitle: "DEVELOPMENT", iconName: "developer.png"),
+        title: "WEB", subTitle: "DEVELOPMENT", iconName: "developer"),
     SkillModel(
-        title: "MOBILE", subTitle: "DEVELOPMENT", iconName: "android.png"),
+        title: "MOBILE", subTitle: "DEVELOPMENT", iconName: "android"),
     SkillModel(
-        title: "WEB SCRAPING", subTitle: "WITH PYTHON", iconName: "python.png"),
+        title: "WEB SCRAPING", subTitle: "WITH PYTHON", iconName: "python"),
   ];
   late List<ServiceModel> serviceModel = [
     ServiceModel(
       title: "UI & UX DESIGNING",
       description: "I design beautiful web iterfaces with Figma and Adove XD",
-      iconName: "uiux.png",
+      iconName: "uiux",
       titleColor: ColorApp().whiteColor,
       borderColor: ColorApp().PrimaryColor,
     ),
@@ -43,7 +43,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       title: "WEB DEVELOPMENT",
       description:
           "I create beautiful iterfaces with simple HTML, CSS, & JavaScript and also frameworks like Angular and ReactJS",
-      iconName: "developer.png",
+      iconName: "developer",
       titleColor: ColorApp().PrimaryColor,
       borderColor: ColorApp().whiteColor,
     ),
@@ -51,7 +51,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       title: "MOBILE DEVELOPMENT",
       description:
           "I am an expert mobile developer. I have experience using Flutter and React Native.",
-      iconName: "android.png",
+      iconName: "android",
       titleColor: ColorApp().whiteColor,
       borderColor: ColorApp().PrimaryColor,
     ),
@@ -59,7 +59,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       title: "VERSION CONTROL",
       description:
           "I can use version control systems well, and Git & Mecurial are my go-to tool.",
-      iconName: "git.png",
+      iconName: "git",
       titleColor: ColorApp().PrimaryColor,
       borderColor: ColorApp().whiteColor,
     ),
@@ -67,7 +67,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       title: "NPM AND NODEJS",
       description:
           "I have core understanding of NPM. I can also develop general purpose applications with NodeJS",
-      iconName: "js.png",
+      iconName: "js",
       titleColor: ColorApp().whiteColor,
       borderColor: ColorApp().PrimaryColor,
     ),
@@ -75,7 +75,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       title: "WEB SCRAPING",
       description:
           "I can collect content and data from the internet then manipulate and analyze as needed.",
-      iconName: "web.png",
+      iconName: "web",
       titleColor: ColorApp().PrimaryColor,
       borderColor: ColorApp().whiteColor,
     ),

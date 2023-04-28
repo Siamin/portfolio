@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
+import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/screens/homeScreen.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
 
 class HomePhoneScreen extends StatelessWidget {
-  const HomePhoneScreen({Key? key}) : super(key: key);
+  final DataModel dataModel;
+
+  const HomePhoneScreen({Key? key, required this.dataModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -48,7 +48,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
         child: Card(
           color: ColorApp().transparent,
           shape: RoundedRectangleBorder(
-            side: BorderSide(color: model.borderColor, width: 2.5),
+            side: BorderSide(color: model.borderColor!, width: 2.5),
             borderRadius: BorderRadius.circular(20.0), //<-- SEE HERE
           ),
           child: Container(

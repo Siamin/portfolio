@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
+import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/screens/aboutMeScreen.dart';
 import 'package:portfolio/view/screens/connectScreen.dart';
 import 'package:portfolio/view/screens/footerScreen.dart';
@@ -8,7 +9,8 @@ import 'package:portfolio/view/screens/projectsScreen.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
 
 class HomeTabletScreen extends StatelessWidget {
-  const HomeTabletScreen({Key? key}) : super(key: key);
+  final DataModel dataModel;
+  const HomeTabletScreen({Key? key, required this.dataModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

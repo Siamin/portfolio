@@ -17,4 +17,11 @@ class SocialMediaModel{
 
   _getPath({required String iconName}) => 'assets/icons/${iconName}.png';
 
+  factory SocialMediaModel.fromJson(Map<String, dynamic> json) => SocialMediaModel(
+  facebook: json["facebook"],
+  instagram: json["instagram"],
+  linkedin: json["linkedin"],
+  mail: json["mail"],
+  );
+
 }

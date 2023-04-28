@@ -9,22 +9,22 @@
   "descriptionExperience": "سال ها تجربه. متخصص در ساخت برنامه ها، در حالی که اطمینان از یکپارچگی\nتجربه وب برای کاربران نهایی",
   "experiences": [
     {
-      "icon": "uiux",
+      "iconName": "uiux",
       "title": "UI & UX",
       "subTitle": "DESIGNING"
     },
     {
-      "icon": "developer",
+      "iconName": "developer",
       "title": "WEB",
       "subTitle": "DEVELOPMENT"
     },
     {
-      "icon": "android",
+      "iconName": "android",
       "title": "MOBILE",
       "subTitle": "DEVELOPMENT"
     },
     {
-      "icon": "python",
+      "iconName": "python",
       "title": "WEB SCRAPING",
       "subTitle": "WITH PYTHON"
     }
