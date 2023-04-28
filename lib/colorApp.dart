@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 
 class ColorApp {
   Color whiteColor = const Color.fromRGBO(255, 255, 255, 1);
+  Color whiteLiteColor = const Color.fromRGBO(245, 245, 245, 1);
   Color LightColor = const Color.fromRGBO(245, 245, 245, 1);
   Color LowPriorityColor = const Color.fromRGBO(132, 129, 145, 1);
   Color PrimaryColor = const Color.fromRGBO(117, 98, 224, 1);
   Color SecondaryColor = const Color.fromRGBO(40, 33, 98, 1);
   Color DarkColor = const Color.fromRGBO(0, 0, 54, 1);
   Color GaryColor = const Color.fromRGBO(49, 49, 63, 1);
+  Color GaryLiteColor = const Color.fromRGBO(52, 52, 65, 1);
   Color transparent = Colors.transparent;
 
   MaterialColor materialApp() {

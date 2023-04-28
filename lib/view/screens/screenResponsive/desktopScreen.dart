@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/view/screens/aboutMeScreen.dart';
+import 'package:portfolio/view/screens/connectScreen.dart';
 import 'package:portfolio/view/screens/homeScreen.dart';
 import 'package:portfolio/view/screens/projectsScreen.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
@@ -36,6 +37,9 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
                   isDesktop: true,
                 ),
                 ProjectsScreen(
+                  isDesktop: true,
+                ),
+                ConnectScreen(
                   isDesktop: true,
                 ),
               ],

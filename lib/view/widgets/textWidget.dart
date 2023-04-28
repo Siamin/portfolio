@@ -4,12 +4,13 @@ class TextWidget extends StatefulWidget {
   final String text;
   final fontSize;
   final Color textColor;
+  final TextAlign textAlign;
 
   const TextWidget(
       {Key? key,
       required this.text,
       this.fontSize = 14.0,
-      required this.textColor,
+      required this.textColor, this.textAlign=TextAlign.start,
       })
       : super(key: key);
 
@@ -30,7 +31,7 @@ class _TextWidgetState extends State<TextWidget> {
           color: widget.textColor,
           fontWeight: FontWeight.bold,
         ),
-        textAlign: TextAlign.start,
+        textAlign: widget.textAlign,
       ),
     );
   }

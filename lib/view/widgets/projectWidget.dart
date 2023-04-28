@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/projectModel.dart';
+import 'package:portfolio/view/widgets/buttonWidget.dart';
 import 'package:portfolio/view/widgets/outlinedButtonWidget.dart';
 
 class ProjectWidget extends StatefulWidget {
@@ -108,25 +109,23 @@ class _ProjectWidgetState extends State<ProjectWidget> {
   getButtonBody(ProjectModel model) => [
         Padding(
           padding: const EdgeInsets.all(3.0),
-          child: OutlinedButtonWidget(
-              backgroundColor: ColorApp().PrimaryColor,
-              textColor: ColorApp().whiteColor,
-              iconSize: size.width * 0.014,
-              icon: Icons.web,
-              textSize: size.width * 0.014,
-              text: 'View Live'),
+          child: ButtonWidget(
+            backgroundColor: ColorApp().PrimaryColor,
+            textColor: ColorApp().whiteColor,
+            textSize: size.width * 0.014,
+            text: "View Live",
+          ),
         ),
         Padding(
           padding: const EdgeInsets.all(3.0),
-          child: OutlinedButtonWidget(
-              backgroundColor: ColorApp().transparent,
-              textColor: ColorApp().whiteColor,
-              borderColor: ColorApp().PrimaryColor,
-              borderWidth: 1,
-              iconSize: size.width * 0.014,
-              icon: Icons.g_mobiledata,
-              textSize: size.width * 0.014,
-              text: 'Github'),
+          child: ButtonWidget(
+            backgroundColor: ColorApp().transparent,
+            textColor: ColorApp().whiteColor,
+            textSize: size.width * 0.014,
+            text: "Github Repo",
+            borderWidth: 1,
+            borderColor: ColorApp().PrimaryColor,
+          ),
         ),
       ];
 }
