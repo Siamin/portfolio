@@ -6,11 +6,12 @@ import 'package:portfolio/view/widgets/textWidget.dart';
 
 class FooterScreen extends StatefulWidget {
   final bool isDesktop, isTablet;
-
+  final SocialMediaModel socialMediaModel;
+  final List<String> footerSkill;
   const FooterScreen({
     Key? key,
     this.isDesktop = false,
-    this.isTablet = false,
+    this.isTablet = false, required this.socialMediaModel, required this.footerSkill,
   }) : super(key: key);
 
   @override
@@ -20,18 +21,7 @@ class FooterScreen extends StatefulWidget {
 class _FooterScreenState extends State<FooterScreen> {
   late Size size;
   late double sumScreen;
-  SocialMediaModel socialMediaModel = SocialMediaModel(
-      facebook: "@facebook",
-      linkedin: "@linkdin",
-      instagram: "instagram",
-      mail: "amin@gmail.com");
-  List<String> footerSkill = [
-    "@2022 Jayjay Dinero Dinero",
-    "Fullstack Developer",
-    "UI Designer",
-    "Data Analyst",
-    "Designed by @ernestechie",
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +36,7 @@ class _FooterScreenState extends State<FooterScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SocialMediaWidget(
-              model: socialMediaModel,
+              model: widget.socialMediaModel,
               isDesktop: widget.isDesktop,
               alignment:
                   widget.isDesktop ? Alignment.centerLeft : Alignment.center,
@@ -60,8 +50,8 @@ class _FooterScreenState extends State<FooterScreen> {
   getRowMyInformation() => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          for (int i = 0; i < footerSkill.length; i++)
-            generateText(text: footerSkill[i]),
+          for (int i = 0; i < widget.footerSkill.length; i++)
+            generateText(text: widget.footerSkill[i]),
         ],
       );
 
@@ -72,8 +62,8 @@ class _FooterScreenState extends State<FooterScreen> {
           fontSize: sumScreen * 0.007,
           textAlign: TextAlign.center,
           width: widget.isDesktop
-              ? size.width * 0.9 / footerSkill.length
-              : (size.width * 0.6) / footerSkill.length,
+              ? size.width * 0.9 / widget.footerSkill.length
+              : (size.width * 0.6) / widget.footerSkill.length,
         ),
       ]);
 }

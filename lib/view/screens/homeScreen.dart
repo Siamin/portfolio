@@ -1,18 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
+import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/widgets/ImageWidget.dart';
 import 'package:portfolio/view/widgets/outlinedButtonWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   final double height, width;
   final bool isDesktop;
+  final DataModel dataModel;
 
   const HomeScreen({
     Key? key,
     required this.height,
     required this.width,
     this.isDesktop = false,
+    required this.dataModel,
   }) : super(key: key);
 
   @override
@@ -25,15 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery
-        .of(context)
-        .size;
+    size = MediaQuery.of(context).size;
 
     return widget.isDesktop ? desktopDesplay() : notDesktopDesplay();
   }
 
-  Widget desktopDesplay() =>
-      Wrap(
+  Widget desktopDesplay() => Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,16 +50,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       );
 
-  Widget notDesktopDesplay() =>
-      Column(
+  Widget notDesktopDesplay() => Column(
         children: [
           imageBody(),
           textBody(),
         ],
       );
 
-  List<Widget> body() =>
-      [
+  List<Widget> body() => [
         Expanded(
           flex: flex,
           child: textBody(),
@@ -70,8 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ];
 
-  Widget imageBody() =>
-      Center(
+  Widget imageBody() => Center(
         child: ImageWidget(
           pathAssets: "assets/images/my_image.png",
           height: widget.height,
@@ -81,8 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
 
-  Widget textBody() =>
-      Wrap(
+  Widget textBody() => Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -93,17 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 textColor: ColorApp().whiteColor,
               ),
               generatText(
-                text: "Amin Syahi",
+                text: widget.dataModel.fullName,
                 fontSize: size.width * 0.08,
                 textColor: ColorApp().whiteColor,
-
               ),
               generatText(
-                text:
-                "Freelance UI designer, Fullstack developer, & Data Miner. I create seamless web experiences for end-users.",
+                text: widget.dataModel.descriptionMe,
                 fontSize: size.width * 0.014,
                 textColor: ColorApp().whiteColor,
-
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -117,7 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         icon: Icons.person,
                         textSize: size.width * 0.014,
                         text: 'About me'),
-
                     OutlinedButtonWidget(
                         backgroundColor: ColorApp().transparent,
                         textColor: ColorApp().whiteColor,

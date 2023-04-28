@@ -8,12 +8,14 @@ import 'package:portfolio/view/widgets/textfieldWidget.dart';
 
 class ConnectScreen extends StatefulWidget {
   final bool isPhone, isTablet, isDesktop;
+  final SocialMediaModel socialMediaModel;
 
   const ConnectScreen({
     Key? key,
     this.isPhone = false,
     this.isTablet = false,
     this.isDesktop = false,
+    required this.socialMediaModel,
   }) : super(key: key);
 
   @override
@@ -23,11 +25,6 @@ class ConnectScreen extends StatefulWidget {
 class _ConnectScreenState extends State<ConnectScreen> {
   late Size size;
   late double sumScreen;
-  SocialMediaModel socialMediaModel = SocialMediaModel(
-      facebook: "@facebook",
-      linkedin: "@linkdin",
-      instagram: "instagram",
-      mail: "amin@gmail.com");
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +80,7 @@ class _ConnectScreenState extends State<ConnectScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SocialMediaWidget(
-              model: socialMediaModel,
+              model: widget.socialMediaModel,
               isDesktop: widget.isDesktop,
               alignment:
                   widget.isDesktop ? Alignment.centerLeft : Alignment.center,
@@ -112,25 +109,29 @@ class _ConnectScreenState extends State<ConnectScreen> {
                 TextFieldWidget(
                   labelText: "Name",
                   width: size.width * (widget.isDesktop ? 0.3 : 0.5),
-                  alignment:
-                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                  alignment: widget.isDesktop
+                      ? Alignment.centerLeft
+                      : Alignment.center,
                 ),
                 TextFieldWidget(
                   labelText: "Email",
                   width: size.width * (widget.isDesktop ? 0.3 : 0.5),
-                  alignment:
-                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                  alignment: widget.isDesktop
+                      ? Alignment.centerLeft
+                      : Alignment.center,
                 ),
                 TextFieldWidget(
                   labelText: "Message",
                   maxLines: 4,
                   width: size.width * (widget.isDesktop ? 0.3 : 0.5),
-                  alignment:
-                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                  alignment: widget.isDesktop
+                      ? Alignment.centerLeft
+                      : Alignment.center,
                 ),
                 Align(
-                  alignment:
-                      widget.isDesktop ? Alignment.centerLeft : Alignment.center,
+                  alignment: widget.isDesktop
+                      ? Alignment.centerLeft
+                      : Alignment.center,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ButtonWidget(

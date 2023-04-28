@@ -8,10 +8,16 @@ import 'package:portfolio/view/screens/homeScreen.dart';
 import 'package:portfolio/view/screens/projectsScreen.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
 
-class HomeTabletScreen extends StatelessWidget {
+class HomeTabletScreen extends StatefulWidget {
   final DataModel dataModel;
+
   const HomeTabletScreen({Key? key, required this.dataModel}) : super(key: key);
 
+  @override
+  State<HomeTabletScreen> createState() => _HomeTabletScreenState();
+}
+
+class _HomeTabletScreenState extends State<HomeTabletScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,25 +33,31 @@ class HomeTabletScreen extends StatelessWidget {
           Expanded(
             flex: 4,
             child: ListView(
-              children: const [
+              children: [
                 HomeScreen(
                   height: 250,
                   width: 250,
+                  dataModel: widget.dataModel,
                 ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: AboutMeScreen(
                     isTablet: true,
+                    dataModel: widget.dataModel,
                   ),
                 ),
                 ProjectsScreen(
                   isTablet: true,
+                  projectModel: widget.dataModel.featured,
                 ),
                 ConnectScreen(
                   isTablet: true,
+                  socialMediaModel: widget.dataModel.socialMedia,
                 ),
                 FooterScreen(
                   isTablet: true,
+                  socialMediaModel: widget.dataModel.socialMedia,
+                  footerSkill: widget.dataModel.footerLinks,
                 ),
               ],
             ),

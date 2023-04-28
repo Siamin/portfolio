@@ -4,7 +4,7 @@
   "fullName": "Amin Syahi",
   "descriptionMe": "Freelance UI designer, Fullstack developer, & Data Miner. I create seamless web experiences for end-users.",
   "aboutMe": "Hi, my name is Jayjay Dinero Dinero, i am a Fullstack web developer, UI designer, and Mobile developer. I jhave honed my skills in Web Development and advance i have core understanding of advance UI design principles. \nHere are the major skiills i have. ",
-  "howYearsExperience": 5,
+  "howYearsExperience": 7,
   "descriptionExperience": "Years of experience. Specialised in building apps, while ensuring a seamless\nweb experience for end users.",
   "experiences": [
     {
@@ -47,7 +47,7 @@
     {
       "title": "VERSION CONTROL",
       "description": "I can use version control systems well, and Git & Mecurial are my go-to tool.",
-      "iconName": "gitxs"
+      "iconName": "git"
     },
     {
       "title": "NPM AND NODEJS",
@@ -93,10 +93,10 @@
     }
   ],
   "socialMedia": {
-    "facebook": "",
+    "facebook": "@facebook",
     "instagram": "",
-    "linkedin": "",
-    "mail": "",
+    "linkedin": "@linkedin",
+    "mail": "@mail",
     "github": ""
   },
   "footerLinks": [

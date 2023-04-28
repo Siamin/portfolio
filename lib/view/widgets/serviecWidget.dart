@@ -29,26 +29,27 @@ class _ServiceWidgetState extends State<ServiceWidget> {
         (size.height + (widget.isTablet ? size.width * 0.3 : size.width));
     divisionColum = widget.isDesktop ? 3 : 2;
 
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.all(16),
       child: GridView.builder(
-          itemCount: widget.serviceModel.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index) =>
-              serviceBody(model: widget.serviceModel[index]),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-          ),
+        itemCount: widget.serviceModel.length,
+        shrinkWrap: true,
+        itemBuilder: (context, index) =>
+            serviceBody(model: widget.serviceModel[index], number: index + 1),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
       ),
     );
   }
 
-  Widget serviceBody({required ServiceModel model}) => Padding(
+  Widget serviceBody({required ServiceModel model, required int number}) =>
+      Padding(
         padding: EdgeInsets.all(sumScreen * 0.002),
         child: Card(
           color: ColorApp().transparent,
           shape: RoundedRectangleBorder(
-            side: BorderSide(color: model.borderColor!, width: 2.5),
+            side: BorderSide(color: model.getBorderColor(number: number), width: 2.5),
             borderRadius: BorderRadius.circular(20.0), //<-- SEE HERE
           ),
           child: Container(
@@ -72,7 +73,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                     child: Text(
                       model.title,
                       style: TextStyle(
-                          color: model.titleColor, fontSize: sumScreen * 0.01),
+                          color: model.getTitleColor(number: number), fontSize: sumScreen * 0.01),
                     ),
                   ),
                   Padding(

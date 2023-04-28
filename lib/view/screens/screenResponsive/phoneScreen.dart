@@ -4,20 +4,25 @@ import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/screens/homeScreen.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
 
-class HomePhoneScreen extends StatelessWidget {
+class HomePhoneScreen extends StatefulWidget {
   final DataModel dataModel;
 
   const HomePhoneScreen({Key? key, required this.dataModel}) : super(key: key);
 
   @override
+  State<HomePhoneScreen> createState() => _HomePhoneScreenState();
+}
+
+class _HomePhoneScreenState extends State<HomePhoneScreen> {
+  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: ColorApp().SecondaryColor,
       appBar: AppBar(
         backgroundColor: ColorApp().DarkColor,
         title: Text(
-          "Amin Syahi",
+          widget.dataModel.fullName,
           style: TextStyle(
               color: ColorApp().PrimaryColor,
               fontSize: 24,
@@ -28,6 +33,7 @@ class HomePhoneScreen extends StatelessWidget {
         child: HomeScreen(
           height: 200,
           width: 200,
+          dataModel: widget.dataModel,
         ),
       ),
       drawer: MenuWidget(isPhone: true,),

@@ -10,7 +10,9 @@ import 'package:portfolio/view/widgets/menuWidget.dart';
 
 class HomeDesktopScreen extends StatefulWidget {
   final DataModel dataModel;
-  const HomeDesktopScreen({Key? key, required this.dataModel}) : super(key: key);
+
+  const HomeDesktopScreen({Key? key, required this.dataModel})
+      : super(key: key);
 
   @override
   State<HomeDesktopScreen> createState() => _HomeDesktopScreenState();
@@ -35,18 +37,24 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
                   isDesktop: true,
                   height: size.height * 0.6,
                   width: size.width * 0.6,
+                  dataModel: widget.dataModel,
                 ),
                 AboutMeScreen(
                   isDesktop: true,
+                  dataModel: widget.dataModel,
                 ),
                 ProjectsScreen(
                   isDesktop: true,
+                  projectModel: widget.dataModel.featured,
                 ),
                 ConnectScreen(
                   isDesktop: true,
+                  socialMediaModel: widget.dataModel.socialMedia,
                 ),
                 FooterScreen(
                   isDesktop: true,
+                  socialMediaModel: widget.dataModel.socialMedia,
+                  footerSkill: widget.dataModel.footerLinks,
                 ),
               ],
             ),

@@ -6,12 +6,12 @@ import 'package:portfolio/view/widgets/textWidget.dart';
 
 class ProjectsScreen extends StatefulWidget {
   final bool isPhone, isTablet, isDesktop;
-
+  final List<ProjectModel> projectModel;
   const ProjectsScreen({
     Key? key,
     this.isPhone = false,
     this.isTablet = false,
-    this.isDesktop = false,
+    this.isDesktop = false, required this.projectModel,
   }) : super(key: key);
 
   @override
@@ -22,26 +22,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
   late Size size;
   late double sumScreen;
 
-  List<ProjectModel> models = [
-    ProjectModel(
-        title: "TWINDER",
-        subTitle:
-            "A live Geolocation app for finding tweets and twitter users around you.",
-        description: "",
-        imageAddress: ["map.png"]),
-    ProjectModel(
-        title: "LIVENTS",
-        subTitle:
-            "A video streaming app with live Geolocation, for streaming events.",
-        description: "",
-        imageAddress: ["live.png"]),
-    ProjectModel(
-        title: "MOOVE",
-        subTitle:
-            "Mobile app for booking instant pickup & dropoff accross major cities.",
-        description: "",
-        imageAddress: ["move.png"]),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +50,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
               ),
             ),
             ProjectWidget(
-              projectModels: models,
+              projectModels: widget.projectModel,
               isDesktop: widget.isDesktop,
               isTablet: widget.isTablet,
               isPhone: widget.isPhone,
