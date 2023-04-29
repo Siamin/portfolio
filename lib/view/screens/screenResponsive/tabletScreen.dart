@@ -24,10 +24,11 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
       backgroundColor: ColorApp().SecondaryColor,
       body: Row(
         children: [
-          const Expanded(
+          Expanded(
             flex: 1,
             child: MenuWidget(
               isTablet: true,
+              dataModel: widget.dataModel,
             ),
           ),
           Expanded(

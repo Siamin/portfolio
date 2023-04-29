@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UndefinedScreen extends StatelessWidget {
   const UndefinedScreen({Key? key}) : super(key: key);
@@ -22,14 +23,14 @@ class UndefinedScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:  [
                   Text(
-                    "This screen undefined",
+                    AppLocalizations.of(context)!.thisScreenUndefined,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: size.width * 0.05,
                     ),
                   ),
                   Text(
-                    "can't show item for this screen size",
+                    AppLocalizations.of(context)!.cantShowItemForThisScreenSize,
                     style: TextStyle(
                       color: Colors.black45,
                       fontSize:size.width * 0.03,

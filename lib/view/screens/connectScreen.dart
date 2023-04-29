@@ -5,6 +5,7 @@ import 'package:portfolio/view/widgets/buttonWidget.dart';
 import 'package:portfolio/view/widgets/socialMediaWidget.dart';
 import 'package:portfolio/view/widgets/textWidget.dart';
 import 'package:portfolio/view/widgets/textfieldWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ConnectScreen extends StatefulWidget {
   final bool isPhone, isTablet, isDesktop;
@@ -62,7 +63,7 @@ class _ConnectScreenState extends State<ConnectScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextWidget(
-              text: "Connect with me:",
+              text: AppLocalizations.of(context)!.connectTitle,
               textColor: ColorApp().PrimaryColor,
               fontSize: sumScreen * (widget.isDesktop ? 0.02 : 0.023),
               textAlign: widget.isDesktop ? TextAlign.start : TextAlign.center,
@@ -71,7 +72,7 @@ class _ConnectScreenState extends State<ConnectScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextWidget(
-              text: "Satisfied with me? Please contact me",
+              text: AppLocalizations.of(context)!.connectDescription,
               textColor: ColorApp().whiteColor,
               fontSize: sumScreen * (widget.isDesktop ? 0.0095 : 0.01),
               textAlign: widget.isDesktop ? TextAlign.start : TextAlign.center,
@@ -99,7 +100,7 @@ class _ConnectScreenState extends State<ConnectScreen> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: TextWidget(
-                    text: "Contact me, let’s make magic together",
+                    text:AppLocalizations.of(context)!.connectTitleForm,
                     textColor: ColorApp().whiteColor,
                     fontSize: sumScreen * (widget.isDesktop ? 0.0095 : 0.01),
                     textAlign:
@@ -107,21 +108,21 @@ class _ConnectScreenState extends State<ConnectScreen> {
                   ),
                 ),
                 TextFieldWidget(
-                  labelText: "Name",
+                  labelText:AppLocalizations.of(context)!.name,
                   width: size.width * (widget.isDesktop ? 0.3 : 0.5),
                   alignment: widget.isDesktop
                       ? Alignment.centerLeft
                       : Alignment.center,
                 ),
                 TextFieldWidget(
-                  labelText: "Email",
+                  labelText: AppLocalizations.of(context)!.email,
                   width: size.width * (widget.isDesktop ? 0.3 : 0.5),
                   alignment: widget.isDesktop
                       ? Alignment.centerLeft
                       : Alignment.center,
                 ),
                 TextFieldWidget(
-                  labelText: "Message",
+                  labelText: AppLocalizations.of(context)!.message,
                   maxLines: 4,
                   width: size.width * (widget.isDesktop ? 0.3 : 0.5),
                   alignment: widget.isDesktop
@@ -138,7 +139,7 @@ class _ConnectScreenState extends State<ConnectScreen> {
                       backgroundColor: ColorApp().PrimaryColor,
                       textColor: ColorApp().whiteColor,
                       textSize: 14,
-                      text: "Send",
+                      text: AppLocalizations.of(context)!.send,
                       onPressed: () {
                         print("send onpress");
                       },

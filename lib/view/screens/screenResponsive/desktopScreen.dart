@@ -28,6 +28,7 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
         children: [
           MenuWidget(
             isDesktop: true,
+            dataModel: widget.dataModel,
           ),
           Expanded(
             flex: 1,

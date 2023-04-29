@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/controllers/jsonController.dart';
 import 'package:portfolio/models/dataModel.dart';
@@ -11,6 +8,7 @@ import 'package:portfolio/view/screens/screenResponsive/tabletScreen.dart';
 import 'package:portfolio/view/screens/screenResponsive/unDefindScreen.dart';
 import 'package:portfolio/view/widgets/loadingWidget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,8 +21,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Portfolio",
       debugShowCheckedModeBanner: true,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale:const Locale('en'),
       theme: ThemeData(
         primarySwatch: ColorApp().materialApp(),
       ),
@@ -34,7 +35,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyPage extends StatefulWidget {
-  const MyPage({super.key,});
+  const MyPage({
+    super.key,
+  });
 
   @override
   State<MyPage> createState() => _MyPageState();
@@ -45,7 +48,7 @@ class _MyPageState extends State<MyPage> {
 
   Future<void> getData() async {
     dataModel =
-        await JsonController().readDataJson(fileName: "dataPortfolioEnglish");
+        await JsonController().readDataJson(fileName: AppLocalizations.of(context)!.jsonFileName);
 
     return;
   }

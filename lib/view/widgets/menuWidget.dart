@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
-import 'package:portfolio/view/widgets/shapes/curvedPainter.dart';
-import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:portfolio/models/dataModel.dart';
 
 class MenuWidget extends StatefulWidget {
   final bool isDesktop, isTablet, isPhone;
+  final DataModel dataModel;
 
   const MenuWidget({
     Key? key,
     this.isDesktop = false,
     this.isTablet = false,
     this.isPhone = false,
+    required this.dataModel,
   }) : super(key: key);
 
   @override
@@ -65,7 +67,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             child: Padding(
               padding: EdgeInsets.only(right: ((width / 2) * 0.3)),
               child: Text(
-                "Amin Syahi",
+                widget.dataModel.fullName,
                 style: TextStyle(
                     color: ColorApp().PrimaryColor,
                     fontSize: widget.isTablet ? 16 : 24,
@@ -95,19 +97,19 @@ class _MenuWidgetState extends State<MenuWidget> {
 
   List<Widget> menuItems() => [
         Text(
-          "Home",
+          AppLocalizations.of(context)!.home,
           style: TextStyle(color: ColorApp().PrimaryColor),
         ),
         Text(
-          "About me",
+          AppLocalizations.of(context)!.aboutMe,
           style: TextStyle(color: ColorApp().whiteColor),
         ),
         Text(
-          "Project",
+          AppLocalizations.of(context)!.projects,
           style: TextStyle(color: ColorApp().whiteColor),
         ),
         Text(
-          "contact",
+          AppLocalizations.of(context)!.contact,
           style: TextStyle(color: ColorApp().whiteColor),
         ),
       ];

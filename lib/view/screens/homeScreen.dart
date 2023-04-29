@@ -4,7 +4,7 @@ import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/widgets/ImageWidget.dart';
 import 'package:portfolio/view/widgets/outlinedButtonWidget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomeScreen extends StatefulWidget {
   final double height, width;
   final bool isDesktop;
@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               generatText(
-                text: "Hello, i’m",
+                text: AppLocalizations.of(context)!.helloIAm,
                 fontSize: size.width * 0.04,
                 textColor: ColorApp().whiteColor,
               ),
@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         iconSize: size.width * 0.014,
                         icon: Icons.person,
                         textSize: size.width * 0.014,
-                        text: 'About me'),
+                        text: AppLocalizations.of(context)!.aboutMe),
                     OutlinedButtonWidget(
                         backgroundColor: ColorApp().transparent,
                         textColor: ColorApp().whiteColor,
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         iconSize: size.width * 0.014,
                         icon: Icons.remove_red_eye,
                         textSize: size.width * 0.014,
-                        text: 'Projects'),
+                        text: AppLocalizations.of(context)!.projects),
                   ],
                 ),
               ),

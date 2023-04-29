@@ -4,7 +4,7 @@ import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/widgets/serviecWidget.dart';
 import 'package:portfolio/view/widgets/skillWidget.dart';
 import 'package:portfolio/view/widgets/textWidget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AboutMeScreen extends StatefulWidget {
   final bool isTablet;
   final bool isDesktop;
@@ -41,7 +41,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextWidget(
-                  text: "About me:",
+                  text: AppLocalizations.of(context)!.aboutMe,
                   textColor: ColorApp().PrimaryColor,
                   fontSize: sumScreen * 0.02,
                 ),
@@ -87,7 +87,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                   height: size.height * 0.03,
                 ),
                 TextWidget(
-                  text: "The services i offer:",
+                  text: AppLocalizations.of(context)!.serviceTitle,
                   textColor: ColorApp().PrimaryColor,
                   fontSize: size.width * 0.02,
                 ),

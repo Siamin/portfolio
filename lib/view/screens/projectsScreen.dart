@@ -3,6 +3,7 @@ import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/projectModel.dart';
 import 'package:portfolio/view/widgets/projectWidget.dart';
 import 'package:portfolio/view/widgets/textWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProjectsScreen extends StatefulWidget {
   final bool isPhone, isTablet, isDesktop;
@@ -36,15 +37,14 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
         child: Column(
           children: [
             TextWidget(
-              text: "Featured projects:",
+              text: AppLocalizations.of(context)!.projectTitle,
               textColor: ColorApp().PrimaryColor,
               fontSize: size.width * 0.02,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: TextWidget(
-                text:
-                    "I have worked on many projects over the course of being a Web Developer, here are a few of my live, real-world projects",
+                text: AppLocalizations.of(context)!.projectDescription,
                 textColor: ColorApp().whiteColor,
                 fontSize: size.width * 0.0095,
               ),

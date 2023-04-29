@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/projectModel.dart';
 import 'package:portfolio/view/widgets/buttonWidget.dart';
-import 'package:portfolio/view/widgets/outlinedButtonWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProjectWidget extends StatefulWidget {
   final bool isTablet;
@@ -113,7 +113,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
             backgroundColor: ColorApp().PrimaryColor,
             textColor: ColorApp().whiteColor,
             textSize: size.width * 0.014,
-            text: "View Live",
+            text: AppLocalizations.of(context)!.viewLive,
           ),
         ),
         Padding(
@@ -122,7 +122,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
             backgroundColor: ColorApp().transparent,
             textColor: ColorApp().whiteColor,
             textSize: size.width * 0.014,
-            text: "Github Repo",
+            text: AppLocalizations.of(context)!.githubRepo,
             borderWidth: 1,
             borderColor: ColorApp().PrimaryColor,
           ),

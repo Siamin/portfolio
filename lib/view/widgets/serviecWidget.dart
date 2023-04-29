@@ -73,7 +73,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                     child: Text(
                       model.title,
                       style: TextStyle(
-                          color: model.getTitleColor(number: number), fontSize: sumScreen * 0.01),
+                          color: model.getTitleColor(number: number), fontSize: sumScreen * 0.0095),
                     ),
                   ),
                   Padding(
@@ -82,7 +82,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                       model.description,
                       style: TextStyle(
                           color: ColorApp().whiteColor,
-                          fontSize: sumScreen * 0.008),
+                          fontSize: sumScreen * 0.007),
                     ),
                   ),
                 ],

@@ -36,7 +36,7 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
           dataModel: widget.dataModel,
         ),
       ),
-      drawer: MenuWidget(isPhone: true,),
+      drawer: MenuWidget(isPhone: true,dataModel: widget.dataModel,),
     );
   }
 }
