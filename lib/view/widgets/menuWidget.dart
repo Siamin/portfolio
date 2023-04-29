@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:portfolio/models/dataModel.dart';
+import 'package:portfolio/view/main.dart';
 
 class MenuWidget extends StatefulWidget {
   final bool isDesktop, isTablet, isPhone;
@@ -23,6 +24,7 @@ class _MenuWidgetState extends State<MenuWidget> {
   late double width;
   int flex = 1;
   late Size size;
+  bool statusLang = false;
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +113,19 @@ class _MenuWidgetState extends State<MenuWidget> {
         Text(
           AppLocalizations.of(context)!.contact,
           style: TextStyle(color: ColorApp().whiteColor),
+        ),
+        Switch(
+          value: statusLang,
+          onChanged: (status) {
+            print("status ${status}");
+            setState(() {
+              statusLang = !statusLang;
+            });
+            if(status)
+              MyApp.setLocal(context, Locale("fa"));
+            else
+              MyApp.setLocal(context, Locale("en"));
+          },
         ),
       ];
 }

@@ -5,7 +5,7 @@ import 'package:portfolio/models/dataModel.dart';
 
 class JsonController {
   Future<DataModel> readDataJson({required String fileName}) async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 2));
     final String resp =
         await rootBundle.loadString('assets/jsons/$fileName.json');
     final data = await json.decode(resp);

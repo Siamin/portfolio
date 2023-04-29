@@ -17,7 +17,25 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  static void setLocal(BuildContext context, Locale locale) {
+    _MatrialState? state = context.findAncestorStateOfType<_MatrialState>();
+    state?.setLocal(locale);
+  }
+
+  @override
+  Widget build(BuildContext context) => Matrial();
+}
+
+class Matrial extends StatefulWidget {
+  const Matrial({Key? key}) : super(key: key);
+
+  @override
+  State<Matrial> createState() => _MatrialState();
+
+}
+
+class _MatrialState extends State<Matrial> {
+  Locale? _locale = Locale("fa");
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,13 +43,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: true,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale:const Locale('en'),
+      locale: _locale,
       theme: ThemeData(
         primarySwatch: ColorApp().materialApp(),
       ),
       home: const MyPage(),
     );
   }
+
+
+  void setLocal(Locale locale) => setState(() {
+    _locale = locale;
+  });
 }
 
 class MyPage extends StatefulWidget {
@@ -46,9 +69,10 @@ class MyPage extends StatefulWidget {
 class _MyPageState extends State<MyPage> {
   late DataModel dataModel;
 
+
   Future<void> getData() async {
-    dataModel =
-        await JsonController().readDataJson(fileName: AppLocalizations.of(context)!.jsonFileName);
+    dataModel = await JsonController()
+        .readDataJson(fileName: AppLocalizations.of(context)!.jsonFileName);
 
     return;
   }
@@ -101,4 +125,5 @@ class _MyPageState extends State<MyPage> {
       },
     );
   }
+
 }
