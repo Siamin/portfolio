@@ -16,9 +16,11 @@
   "email": "ایمیل",
   "message": "پبام",
   "send": "ارسال",
-  "helloIAm": "من",
+  "helloIAm": "سلام، من",
   "jsonFileName": "dataPortfolioFa",
   "urlSendMail": "",
   "thisScreenUndefined": "این صفحه نمایش تعریف نشده است",
-  "cantShowItemForThisScreenSize": "نمی توان مورد را برای این اندازه صفحه نمایش داد"
+  "cantShowItemForThisScreenSize": "نمی توان مورد را برای این اندازه صفحه نمایش داد",
+  "english": "انگلیسی",
+  "persian": "فارسی"
 }

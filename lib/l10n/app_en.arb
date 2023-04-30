@@ -20,5 +20,7 @@
   "jsonFileName": "dataPortfolioEn",
   "urlSendMail": "",
   "thisScreenUndefined": "This screen undefined",
-  "cantShowItemForThisScreenSize": "can't show item for this screen size"
+  "cantShowItemForThisScreenSize": "can't show item for this screen size",
+  "english": "English",
+  "persian": "Persian"
 }

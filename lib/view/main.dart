@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
+import 'package:portfolio/controllers/SharePreferencesController.dart';
 import 'package:portfolio/controllers/jsonController.dart';
 import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/screens/screenResponsive/desktopScreen.dart';
@@ -31,11 +32,22 @@ class Matrial extends StatefulWidget {
 
   @override
   State<Matrial> createState() => _MatrialState();
-
 }
 
 class _MatrialState extends State<Matrial> {
   Locale? _locale = Locale("fa");
+  SharePreferencesController spController = SharePreferencesController();
+  @override
+  void initState() {
+    super.initState();
+    spController.getLanguage().then((lang) {
+      print("lang ${lang}");
+      setState(() {
+        _locale = Locale(lang);
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,10 +63,9 @@ class _MatrialState extends State<Matrial> {
     );
   }
 
-
   void setLocal(Locale locale) => setState(() {
-    _locale = locale;
-  });
+        _locale = locale;
+      });
 }
 
 class MyPage extends StatefulWidget {
@@ -68,7 +79,6 @@ class MyPage extends StatefulWidget {
 
 class _MyPageState extends State<MyPage> {
   late DataModel dataModel;
-
 
   Future<void> getData() async {
     dataModel = await JsonController()
@@ -125,5 +135,4 @@ class _MyPageState extends State<MyPage> {
       },
     );
   }
-
 }

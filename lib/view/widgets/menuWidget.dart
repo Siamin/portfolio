@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:portfolio/controllers/SharePreferencesController.dart';
 import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/main.dart';
+import 'package:portfolio/view/widgets/languageWidget.dart';
 
 class MenuWidget extends StatefulWidget {
   final bool isDesktop, isTablet, isPhone;
@@ -24,13 +26,12 @@ class _MenuWidgetState extends State<MenuWidget> {
   late double width;
   int flex = 1;
   late Size size;
-  bool statusLang = false;
 
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     width = widget.isDesktop ? size.width : 0;
-    flex = widget.isDesktop ? 1 : 3;
+    flex = widget.isDesktop ? 2 : 3;
     if (widget.isDesktop) {
       return desktopMenu();
     } else if (widget.isTablet) {
@@ -41,13 +42,17 @@ class _MenuWidgetState extends State<MenuWidget> {
       return Container();
   }
 
-  Widget desktopMenu() => Container(
-        color: ColorApp().DarkColor,
-        height: size.height * 0.06,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: menuBody(),
-        ),
+  Widget desktopMenu() => Column(
+        children: [
+          Container(
+            color: ColorApp().DarkColor,
+            height: size.height * 0.06,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: menuBody(),
+            ),
+          ),
+        ],
       );
 
   Widget tabletMenu() => Container(
@@ -65,17 +70,26 @@ class _MenuWidgetState extends State<MenuWidget> {
   List<Widget> menuBody() => [
         Expanded(
           flex: 1,
-          child: Center(
-            child: Padding(
-              padding: EdgeInsets.only(right: ((width / 2) * 0.3)),
-              child: Text(
-                widget.dataModel.fullName,
-                style: TextStyle(
-                    color: ColorApp().PrimaryColor,
-                    fontSize: widget.isTablet ? 16 : 24,
-                    fontWeight: FontWeight.bold),
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: !widget.isDesktop ? LanguageWidget() : Text(""),
               ),
-            ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(right: ((width / 2) * 0.3)),
+                  child: Text(
+                    widget.dataModel.fullName,
+                    style: TextStyle(
+                        color: ColorApp().PrimaryColor,
+                        fontSize: widget.isTablet ? 16 : 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         Expanded(
@@ -114,18 +128,6 @@ class _MenuWidgetState extends State<MenuWidget> {
           AppLocalizations.of(context)!.contact,
           style: TextStyle(color: ColorApp().whiteColor),
         ),
-        Switch(
-          value: statusLang,
-          onChanged: (status) {
-            print("status ${status}");
-            setState(() {
-              statusLang = !statusLang;
-            });
-            if(status)
-              MyApp.setLocal(context, Locale("fa"));
-            else
-              MyApp.setLocal(context, Locale("en"));
-          },
-        ),
+        if (widget.isDesktop) LanguageWidget()
       ];
 }
