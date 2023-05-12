@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/screens/homeScreen.dart';
+import 'package:portfolio/view/widgets/languageWidget.dart';
 import 'package:portfolio/view/widgets/menuWidget.dart';
 
 class HomePhoneScreen extends StatefulWidget {
@@ -21,6 +22,9 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
       backgroundColor: ColorApp().SecondaryColor,
       appBar: AppBar(
         backgroundColor: ColorApp().DarkColor,
+        actions: [
+          LanguageWidget()
+        ],
         title: Text(
           widget.dataModel.fullName,
           style: TextStyle(
@@ -36,7 +40,7 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
           dataModel: widget.dataModel,
         ),
       ),
-      drawer: MenuWidget(isPhone: true,dataModel: widget.dataModel,),
+      bottomNavigationBar: MenuWidget(isPhone: true,dataModel: widget.dataModel,onItemTapped: (indexPage){},),
     );
   }
 }

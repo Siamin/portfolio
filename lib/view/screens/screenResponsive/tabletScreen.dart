@@ -29,6 +29,7 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
             child: MenuWidget(
               isTablet: true,
               dataModel: widget.dataModel,
+              onItemTapped: (indexPage){},
             ),
           ),
           Expanded(

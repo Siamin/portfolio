@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:portfolio/controllers/SharePreferencesController.dart';
 import 'package:portfolio/models/dataModel.dart';
-import 'package:portfolio/view/main.dart';
 import 'package:portfolio/view/widgets/languageWidget.dart';
 
 class MenuWidget extends StatefulWidget {
   final bool isDesktop, isTablet, isPhone;
   final DataModel dataModel;
+  final ValueChanged<int>? onItemTapped;
 
   const MenuWidget({
     Key? key,
@@ -16,6 +15,7 @@ class MenuWidget extends StatefulWidget {
     this.isTablet = false,
     this.isPhone = false,
     required this.dataModel,
+    this.onItemTapped,
   }) : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class MenuWidget extends StatefulWidget {
 
 class _MenuWidgetState extends State<MenuWidget> {
   late double width;
-  int flex = 1;
+  int flex = 1, _selectedIndex = 0;
   late Size size;
 
   @override
@@ -62,9 +62,35 @@ class _MenuWidgetState extends State<MenuWidget> {
         ),
       );
 
-  Widget phoneMenu() => Drawer(
+  Widget phoneMenu() => BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.home),
+            label: AppLocalizations.of(context)!.home,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_outlined),
+            label: AppLocalizations.of(context)!.aboutMe,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.data_object),
+            label: AppLocalizations.of(context)!.projects,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.connect_without_contact),
+            label: AppLocalizations.of(context)!.contact,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: ColorApp().PrimaryColor,
         backgroundColor: ColorApp().DarkColor,
-        child: tabletMenu(),
+        unselectedItemColor: ColorApp().PrimaryColorLite,
+        onTap: (val) {
+          widget.onItemTapped!(val);
+          setState(() {
+            _selectedIndex = val;
+          });
+        },
       );
 
   List<Widget> menuBody() => [
@@ -112,21 +138,65 @@ class _MenuWidgetState extends State<MenuWidget> {
       );
 
   List<Widget> menuItems() => [
-        Text(
-          AppLocalizations.of(context)!.home,
-          style: TextStyle(color: ColorApp().PrimaryColor),
+        TextButton(
+          onPressed: () {
+            widget.onItemTapped!(0);
+            setState(() {
+              _selectedIndex = 0;
+            });
+          },
+          child: Text(
+            AppLocalizations.of(context)!.home,
+            style: TextStyle(
+                color: _selectedIndex == 0
+                    ? ColorApp().PrimaryColor
+                    : ColorApp().whiteColor),
+          ),
         ),
-        Text(
-          AppLocalizations.of(context)!.aboutMe,
-          style: TextStyle(color: ColorApp().whiteColor),
+        TextButton(
+          onPressed: () {
+            widget.onItemTapped!(1);
+            setState(() {
+              _selectedIndex = 1;
+            });
+          },
+          child: Text(
+            AppLocalizations.of(context)!.aboutMe,
+            style: TextStyle(
+                color: _selectedIndex == 1
+                    ? ColorApp().PrimaryColor
+                    : ColorApp().whiteColor),
+          ),
         ),
-        Text(
-          AppLocalizations.of(context)!.projects,
-          style: TextStyle(color: ColorApp().whiteColor),
+        TextButton(
+          onPressed: () {
+            widget.onItemTapped!(2);
+            setState(() {
+              _selectedIndex = 2;
+            });
+          },
+          child: Text(
+            AppLocalizations.of(context)!.projects,
+            style: TextStyle(
+                color: _selectedIndex == 2
+                    ? ColorApp().PrimaryColor
+                    : ColorApp().whiteColor),
+          ),
         ),
-        Text(
-          AppLocalizations.of(context)!.contact,
-          style: TextStyle(color: ColorApp().whiteColor),
+        TextButton(
+          onPressed: () {
+            widget.onItemTapped!(3);
+            setState(() {
+              _selectedIndex = 3;
+            });
+          },
+          child: Text(
+            AppLocalizations.of(context)!.contact,
+            style: TextStyle(
+                color: _selectedIndex == 3
+                    ? ColorApp().PrimaryColor
+                    : ColorApp().whiteColor),
+          ),
         ),
         if (widget.isDesktop) LanguageWidget()
       ];

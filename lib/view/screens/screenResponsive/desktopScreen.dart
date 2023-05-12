@@ -29,6 +29,7 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
           MenuWidget(
             isDesktop: true,
             dataModel: widget.dataModel,
+            onItemTapped: (indexPage){},
           ),
           Expanded(
             flex: 1,

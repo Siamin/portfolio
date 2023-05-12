@@ -8,6 +8,7 @@ class ColorApp {
   Color LightColor = const Color.fromRGBO(245, 245, 245, 1);
   Color LowPriorityColor = const Color.fromRGBO(132, 129, 145, 1);
   Color PrimaryColor = const Color.fromRGBO(117, 98, 224, 1);
+  Color PrimaryColorLite = const Color.fromRGBO(117, 98, 224, 0.5);
   Color SecondaryColor = const Color.fromRGBO(40, 33, 98, 1);
   Color SecondaryDarkColor = const Color.fromRGBO(35, 30, 80, 1);
   Color DarkColor = const Color.fromRGBO(0, 0, 54, 1);
