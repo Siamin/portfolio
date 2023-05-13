@@ -8,12 +8,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class AboutMeScreen extends StatefulWidget {
   final bool isTablet;
   final bool isDesktop;
+  final bool isPhone;
   final DataModel dataModel;
 
   const AboutMeScreen({
     Key? key,
     this.isTablet = false,
     this.isDesktop = false,
+    this.isPhone = false,
     required this.dataModel,
   }) : super(key: key);
 
@@ -35,73 +37,82 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
       child: Container(
         width: size.width,
         // height: size.height,
-        child: Wrap(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextWidget(
-                  text: AppLocalizations.of(context)!.aboutMe,
-                  textColor: ColorApp().PrimaryColor,
-                  fontSize: sumScreen * 0.02,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: TextWidget(
-                    text: widget.dataModel.aboutMe,
-                    textColor: ColorApp().whiteColor,
-                    fontSize: sumScreen * 0.012,
-                  ),
-                ),
-                SizedBox(
-                  height: size.height * 0.03,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: sumScreen * 0.008),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: TextWidget(
-                          text: "${widget.dataModel.howYearsExperience}+",
-                          textColor: ColorApp().PrimaryColor,
-                          fontSize: sumScreen * 0.04,
-                        ),
-                      ),
-                      Expanded(
-                        flex: 7,
-                        child: TextWidget(
-                          text:widget.dataModel.descriptionExperience,
-                          textColor: ColorApp().whiteColor,
-                          fontSize: size.width * 0.02,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SkillWidget(
-                  skillModel: widget.dataModel.experiences,
-                  isTablet: widget.isTablet,
-                ),
-                SizedBox(
-                  height: size.height * 0.03,
-                ),
-                TextWidget(
-                  text: AppLocalizations.of(context)!.serviceTitle,
-                  textColor: ColorApp().PrimaryColor,
-                  fontSize: size.width * 0.02,
-                ),
-                ServiceWidget(
-                  serviceModel: widget.dataModel.services,
-                  isDesktop: widget.isDesktop,
-                  isTablet: widget.isTablet,
-                )
-              ],
-            )
-          ],
-        ),
+        child: widget.isPhone?viewPhone():viewBody(),
       ),
     );
   }
+
+  viewPhone()=> ListView(
+    children: getListBody(),
+  );
+
+
+  viewBody()=>Wrap(
+    children: [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: getListBody(),
+      )
+    ],
+  );
+
+  getListBody()=>[
+    TextWidget(
+      text: AppLocalizations.of(context)!.aboutMe,
+      textColor: ColorApp().PrimaryColor,
+      fontSize: sumScreen * 0.02,
+    ),
+    Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: TextWidget(
+        text: widget.dataModel.aboutMe,
+        textColor: ColorApp().whiteColor,
+        fontSize: sumScreen * 0.012,
+      ),
+    ),
+    SizedBox(
+      height: size.height * 0.03,
+    ),
+    Padding(
+      padding: EdgeInsets.symmetric(horizontal: sumScreen * 0.008),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: TextWidget(
+              text: "${widget.dataModel.howYearsExperience}+",
+              textColor: ColorApp().PrimaryColor,
+              fontSize: sumScreen * 0.04,
+            ),
+          ),
+          Expanded(
+            flex: 7,
+            child: TextWidget(
+              text:widget.dataModel.descriptionExperience,
+              textColor: ColorApp().whiteColor,
+              fontSize: size.width * 0.02,
+            ),
+          ),
+        ],
+      ),
+    ),
+    SkillWidget(
+      skillModel: widget.dataModel.experiences,
+      isTablet: widget.isTablet,
+    ),
+    SizedBox(
+      height: size.height * 0.03,
+    ),
+    TextWidget(
+      text: AppLocalizations.of(context)!.serviceTitle,
+      textColor: ColorApp().PrimaryColor,
+      fontSize: size.width * 0.02,
+    ),
+    ServiceWidget(
+      serviceModel: widget.dataModel.services,
+      isDesktop: widget.isDesktop,
+      isTablet: widget.isTablet,
+    )
+  ];
 
 }

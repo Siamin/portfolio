@@ -18,8 +18,43 @@ class HomeTabletScreen extends StatefulWidget {
 }
 
 class _HomeTabletScreenState extends State<HomeTabletScreen> {
+  bool _showBackToTopButton = false;
+  late ScrollController _scrollController;
+  List<double> offsetIndexPages = [0, 1, 2.5, 3.3];
+  double offsetPages = 0.0;
+  int selectedIndex=0;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          if (_scrollController.offset >= offsetIndexPages[3]*offsetPages) {//Contact
+            selectedIndex=3;
+          }else if (_scrollController.offset >= offsetIndexPages[2]*offsetPages) {//Projects
+            selectedIndex=2;
+          }else if (_scrollController.offset >= offsetIndexPages[1]*offsetPages) {//AboutME
+            _showBackToTopButton = true;
+            selectedIndex=1;
+          } else {//HOME
+            _showBackToTopButton = false;
+            selectedIndex=0;
+          }
+        });
+      });
+
+    super.initState();
+  }
+
+  void _scrollToOffset(double offset) {
+    _scrollController.animateTo(offset,
+        duration: const Duration(seconds: 2), curve: Curves.linear);
+  }
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    offsetPages = ((size.height + size.width) * 0.35);
     return Scaffold(
       backgroundColor: ColorApp().SecondaryColor,
       body: Row(
@@ -28,13 +63,20 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
             flex: 1,
             child: MenuWidget(
               isTablet: true,
+              selectedIndex: selectedIndex,
               dataModel: widget.dataModel,
-              onItemTapped: (indexPage){},
+              onItemTapped: (indexPage) {
+                _scrollToOffset(offsetIndexPages[indexPage] * offsetPages);
+                setState(() {
+                  selectedIndex=indexPage;
+                });
+              },
             ),
           ),
           Expanded(
             flex: 4,
             child: ListView(
+              controller: _scrollController,
               children: [
                 HomeScreen(
                   height: 250,
@@ -66,6 +108,12 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
           ),
         ],
       ),
+      floatingActionButton: _showBackToTopButton == false
+          ? null
+          : FloatingActionButton(
+              onPressed: () => _scrollToOffset(0),
+              child: const Icon(Icons.arrow_upward),
+            ),
     );
   }
 }

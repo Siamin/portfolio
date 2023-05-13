@@ -8,14 +8,14 @@ class MenuWidget extends StatefulWidget {
   final bool isDesktop, isTablet, isPhone;
   final DataModel dataModel;
   final ValueChanged<int>? onItemTapped;
-
+  final int selectedIndex;
   const MenuWidget({
     Key? key,
     this.isDesktop = false,
     this.isTablet = false,
     this.isPhone = false,
     required this.dataModel,
-    this.onItemTapped,
+    this.onItemTapped, required this.selectedIndex,
   }) : super(key: key);
 
   @override
@@ -28,10 +28,18 @@ class _MenuWidgetState extends State<MenuWidget> {
   late Size size;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     width = widget.isDesktop ? size.width : 0;
     flex = widget.isDesktop ? 2 : 3;
+
+    _selectedIndex = widget.selectedIndex;
+
     if (widget.isDesktop) {
       return desktopMenu();
     } else if (widget.isTablet) {
@@ -69,15 +77,15 @@ class _MenuWidgetState extends State<MenuWidget> {
             label: AppLocalizations.of(context)!.home,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_outlined),
+            icon: const Icon(Icons.account_box_outlined),
             label: AppLocalizations.of(context)!.aboutMe,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.data_object),
+            icon: const Icon(Icons.data_object),
             label: AppLocalizations.of(context)!.projects,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.connect_without_contact),
+            icon: const Icon(Icons.connect_without_contact),
             label: AppLocalizations.of(context)!.contact,
           ),
         ],
@@ -101,7 +109,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               Positioned(
                 bottom: 0,
                 right: 0,
-                child: !widget.isDesktop ? LanguageWidget() : Text(""),
+                child: !widget.isDesktop ? const LanguageWidget() : const Text(""),
               ),
               Center(
                 child: Padding(
@@ -198,6 +206,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                     : ColorApp().whiteColor),
           ),
         ),
-        if (widget.isDesktop) LanguageWidget()
+        if (widget.isDesktop) const LanguageWidget()
       ];
 }
