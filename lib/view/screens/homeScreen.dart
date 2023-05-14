@@ -5,10 +5,12 @@ import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/widgets/ImageWidget.dart';
 import 'package:portfolio/view/widgets/outlinedButtonWidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomeScreen extends StatefulWidget {
   final double height, width;
   final bool isDesktop;
   final DataModel dataModel;
+  final ValueChanged<int>? onItemTapped;
 
   const HomeScreen({
     Key? key,
@@ -16,6 +18,7 @@ class HomeScreen extends StatefulWidget {
     required this.width,
     this.isDesktop = false,
     required this.dataModel,
+    this.onItemTapped,
   }) : super(key: key);
 
   @override
@@ -104,21 +107,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     OutlinedButtonWidget(
-                        backgroundColor: ColorApp().PrimaryColor,
-                        textColor: ColorApp().whiteColor,
-                        iconSize: size.width * 0.014,
-                        icon: Icons.person,
-                        textSize: size.width * 0.014,
-                        text: AppLocalizations.of(context)!.aboutMe),
+                      backgroundColor: ColorApp().PrimaryColor,
+                      textColor: ColorApp().whiteColor,
+                      iconSize: size.width * 0.014,
+                      icon: Icons.person,
+                      textSize: size.width * 0.014,
+                      text: AppLocalizations.of(context)!.aboutMe,
+                      onPressed: () {
+                        print("Pressed");
+                        widget.onItemTapped!(1);
+                      },
+                    ),
                     OutlinedButtonWidget(
-                        backgroundColor: ColorApp().transparent,
-                        textColor: ColorApp().whiteColor,
-                        borderColor: ColorApp().PrimaryColor,
-                        borderWidth: 1,
-                        iconSize: size.width * 0.014,
-                        icon: Icons.remove_red_eye,
-                        textSize: size.width * 0.014,
-                        text: AppLocalizations.of(context)!.projects),
+                      backgroundColor: ColorApp().transparent,
+                      textColor: ColorApp().whiteColor,
+                      borderColor: ColorApp().PrimaryColor,
+                      borderWidth: 1,
+                      iconSize: size.width * 0.014,
+                      icon: Icons.remove_red_eye,
+                      textSize: size.width * 0.014,
+                      text: AppLocalizations.of(context)!.projects,
+                      onPressed: () {
+                        print("Pressed");
+                        widget.onItemTapped!(2);
+                      },
+                    ),
                   ],
                 ),
               ),

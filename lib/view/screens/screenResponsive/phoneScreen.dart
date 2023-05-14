@@ -61,6 +61,13 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
             height: 200,
             width: 200,
             dataModel: widget.dataModel,
+            onItemTapped: (indexPage){
+              print("index$indexPage");
+              _gotPageByIndex(indexPage);
+              setState(() {
+                selectedIndex = indexPage;
+              });
+            },
           ),
           AboutMeScreen(
             isPhone: true,

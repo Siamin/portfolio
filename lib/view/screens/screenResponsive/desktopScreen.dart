@@ -82,6 +82,13 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
                   height: size.height * 0.6,
                   width: size.width * 0.6,
                   dataModel: widget.dataModel,
+                  onItemTapped: (indexPage){
+                    print("index$indexPage");
+                    _scrollToOffset(offsetIndexPages[indexPage] * offsetPages);
+                    setState(() {
+                      selectedIndex = indexPage;
+                    });
+                  },
                 ),
                 AboutMeScreen(
                   isDesktop: true,

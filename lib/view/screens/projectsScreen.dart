@@ -24,7 +24,6 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
   late double sumScreen;
 
 
-
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -34,30 +33,42 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
       width: size.width,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: widget.isPhone ? 8 : 32),
-        child: Column(
-          children: [
-            TextWidget(
-              text: AppLocalizations.of(context)!.projectTitle,
-              textColor: ColorApp().PrimaryColor,
-              fontSize: size.width * 0.02,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: TextWidget(
-                text: AppLocalizations.of(context)!.projectDescription,
-                textColor: ColorApp().whiteColor,
-                fontSize: size.width * 0.0095,
-              ),
-            ),
-            ProjectWidget(
-              projectModels: widget.projectModel,
-              isDesktop: widget.isDesktop,
-              isTablet: widget.isTablet,
-              isPhone: widget.isPhone,
-            )
-          ],
-        ),
+        child: widget.isPhone?getPhoneBody():otherBody(),
       ),
     );
   }
+
+  getPhoneBody() => ListView(
+    children: [
+      otherBody(),
+    ],
+  );
+
+  otherBody() => Column(
+    children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: TextWidget(
+          text: AppLocalizations.of(context)!.projectTitle,
+          textColor: ColorApp().PrimaryColor,
+          fontSize: size.width * 0.02,
+
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 16.0),
+        child: TextWidget(
+          text: AppLocalizations.of(context)!.projectDescription,
+          textColor: ColorApp().whiteColor,
+          fontSize: size.width * 0.015,
+        ),
+      ),
+      ProjectWidget(
+        projectModels: widget.projectModel,
+        isDesktop: widget.isDesktop,
+        isTablet: widget.isTablet,
+        isPhone: widget.isPhone,
+      )
+    ],
+  );
 }

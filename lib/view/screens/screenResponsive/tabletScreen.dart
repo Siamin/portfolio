@@ -22,23 +22,29 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
   late ScrollController _scrollController;
   List<double> offsetIndexPages = [0, 1, 2.5, 3.3];
   double offsetPages = 0.0;
-  int selectedIndex=0;
+  int selectedIndex = 0;
 
   @override
   void initState() {
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
-          if (_scrollController.offset >= offsetIndexPages[3]*offsetPages) {//Contact
-            selectedIndex=3;
-          }else if (_scrollController.offset >= offsetIndexPages[2]*offsetPages) {//Projects
-            selectedIndex=2;
-          }else if (_scrollController.offset >= offsetIndexPages[1]*offsetPages) {//AboutME
+          if (_scrollController.offset >= offsetIndexPages[3] * offsetPages) {
+            //Contact
+            selectedIndex = 3;
+          } else if (_scrollController.offset >=
+              offsetIndexPages[2] * offsetPages) {
+            //Projects
+            selectedIndex = 2;
+          } else if (_scrollController.offset >=
+              offsetIndexPages[1] * offsetPages) {
+            //AboutME
             _showBackToTopButton = true;
-            selectedIndex=1;
-          } else {//HOME
+            selectedIndex = 1;
+          } else {
+            //HOME
             _showBackToTopButton = false;
-            selectedIndex=0;
+            selectedIndex = 0;
           }
         });
       });
@@ -68,7 +74,7 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
               onItemTapped: (indexPage) {
                 _scrollToOffset(offsetIndexPages[indexPage] * offsetPages);
                 setState(() {
-                  selectedIndex=indexPage;
+                  selectedIndex = indexPage;
                 });
               },
             ),
@@ -82,6 +88,13 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
                   height: 250,
                   width: 250,
                   dataModel: widget.dataModel,
+                  onItemTapped: (indexPage){
+                    print("index$indexPage");
+                    _scrollToOffset(offsetIndexPages[indexPage] * offsetPages);
+                    setState(() {
+                      selectedIndex = indexPage;
+                    });
+                  },
                 ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
@@ -108,12 +121,12 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
           ),
         ],
       ),
-      floatingActionButton: _showBackToTopButton == false
-          ? null
-          : FloatingActionButton(
+      floatingActionButton: _showBackToTopButton
+          ? FloatingActionButton(
               onPressed: () => _scrollToOffset(0),
               child: const Icon(Icons.arrow_upward),
-            ),
+            )
+          : null,
     );
   }
 }

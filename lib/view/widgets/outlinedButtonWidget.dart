@@ -9,6 +9,7 @@ class OutlinedButtonWidget extends StatefulWidget {
   final double textSize;
   final IconData icon;
   final String text;
+  final VoidCallback? onPressed;
 
   const OutlinedButtonWidget(
       {Key? key,
@@ -19,7 +20,8 @@ class OutlinedButtonWidget extends StatefulWidget {
       required this.iconSize,
       required this.textSize,
       required this.icon,
-      required this.text})
+      required this.text,
+      this.onPressed})
       : super(key: key);
 
   @override
@@ -30,7 +32,6 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
-      // <-- OutlinedButton
       style: OutlinedButton.styleFrom(
         backgroundColor: widget.backgroundColor,
         primary: widget.textColor,
@@ -39,7 +40,10 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
           width: widget.borderWidth!,
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+        widget.onPressed!.call();
+        print("Pressed outline button widget");
+      },
       icon: Icon(
         widget.icon,
         size: widget.iconSize,
