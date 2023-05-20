@@ -60,6 +60,7 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
           HomeScreen(
             height: 200,
             width: 200,
+            isPhone: true,
             dataModel: widget.dataModel,
             onItemTapped: (indexPage){
               print("index$indexPage");

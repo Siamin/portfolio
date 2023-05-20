@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/skillModel.dart';
+import 'package:portfolio/valueApp.dart';
 
 class SkillWidget extends StatefulWidget {
-  final bool isTablet;
+  final bool isTablet, isPhone, isDesktop;
   final List<SkillModel> skillModel;
 
-  const SkillWidget({Key? key, this.isTablet = false, required this.skillModel})
-      : super(key: key);
+  const SkillWidget({
+    Key? key,
+    this.isTablet = false,
+    required this.skillModel,
+    this.isPhone = false,
+    this.isDesktop = false,
+  }) : super(key: key);
 
   @override
   State<SkillWidget> createState() => _SkillWidgetState();
@@ -15,22 +21,25 @@ class SkillWidget extends StatefulWidget {
 
 class _SkillWidgetState extends State<SkillWidget> {
   late Size size;
-  late double sumScreen;
+  late ValueApp valueApp;
 
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
-    sumScreen =
-        (size.height + (widget.isTablet ? size.width * 0.3 : size.width));
+    valueApp = ValueApp(
+        size: size,
+        isPhone: widget.isPhone,
+        isDesktop: widget.isDesktop,
+        isTablet: widget.isTablet);
 
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(valueApp.getPaddingSize(8)),
       child: GridView.builder(
         itemCount: widget.skillModel.length,
         shrinkWrap: true,
         itemBuilder: (context, index) =>
             skillbody(model: widget.skillModel[index]),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
         ),
       ),
@@ -38,13 +47,13 @@ class _SkillWidgetState extends State<SkillWidget> {
   }
 
   Widget skillbody({required SkillModel model}) => Padding(
-        padding: EdgeInsets.all(sumScreen * 0.005),
+        padding: EdgeInsets.all(valueApp.getPaddingSize(2.5)),
         child: Container(
-          height: sumScreen * 0.11,
-          width: sumScreen * 0.11,
+          height: valueApp.getBoxSize(),
+          width: valueApp.getBoxSize(),
           color: ColorApp().PrimaryColor,
           child: Padding(
-            padding: EdgeInsets.all(sumScreen * 0.008),
+            padding: EdgeInsets.all(valueApp.getPaddingSize(1.5)),
             child: Stack(
               children: [
                 Positioned(
@@ -55,20 +64,22 @@ class _SkillWidgetState extends State<SkillWidget> {
                     children: [
                       Image.asset(
                         model.getPath(),
-                        height: sumScreen * 0.02,
-                        width: sumScreen * 0.02,
+                        height: valueApp.getImageSize(15),
+                        width: valueApp.getImageSize(15),
                       ),
                       Text(
                         model.title,
                         style: TextStyle(
-                            color: ColorApp().whiteColor,
-                            fontSize: sumScreen * 0.008),
+                          color: ColorApp().whiteColor,
+                          fontSize: valueApp.getTitleSizeH2(),
+                        ),
                       ),
                       Text(
                         model.subTitle,
                         style: TextStyle(
-                            color: ColorApp().whiteColor,
-                            fontSize: sumScreen * 0.008),
+                          color: ColorApp().whiteColor,
+                          fontSize: valueApp.getSubtitleSizeH3(),
+                        ),
                       ),
                     ],
                   ),

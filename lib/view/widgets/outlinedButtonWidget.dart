@@ -42,7 +42,6 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
       ),
       onPressed: () {
         widget.onPressed!.call();
-        print("Pressed outline button widget");
       },
       icon: Icon(
         widget.icon,

@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/dataModel.dart';
+import 'package:portfolio/valueApp.dart';
 import 'package:portfolio/view/widgets/ImageWidget.dart';
 import 'package:portfolio/view/widgets/outlinedButtonWidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   final double height, width;
-  final bool isDesktop;
+  final bool isDesktop, isPhone, isTablet;
   final DataModel dataModel;
   final ValueChanged<int>? onItemTapped;
 
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
     required this.width,
     this.isDesktop = false,
     required this.dataModel,
-    this.onItemTapped,
+    this.onItemTapped, this.isPhone = false, this.isTablet = false,
   }) : super(key: key);
 
   @override
@@ -28,15 +29,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late Size size;
   int flex = 1;
+  late ValueApp valueApp;
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
-
+    size = MediaQuery
+        .of(context)
+        .size;
+    valueApp = ValueApp(size: size,
+        isPhone: widget.isPhone,
+        isDesktop: widget.isDesktop,
+        isTablet: widget.isTablet);
     return widget.isDesktop ? desktopDesplay() : notDesktopDesplay();
   }
 
-  Widget desktopDesplay() => Wrap(
+  Widget desktopDesplay() =>
+      Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,14 +61,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       );
 
-  Widget notDesktopDesplay() => Column(
+  Widget notDesktopDesplay() =>
+      Column(
         children: [
           imageBody(),
           textBody(),
         ],
       );
 
-  List<Widget> body() => [
+  List<Widget> body() =>
+      [
         Expanded(
           flex: flex,
           child: textBody(),
@@ -71,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ];
 
-  Widget imageBody() => Center(
+  Widget imageBody() =>
+      Center(
         child: ImageWidget(
           pathAssets: "assets/images/my_image.png",
           height: widget.height,
@@ -81,40 +92,40 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
 
-  Widget textBody() => Wrap(
+  Widget textBody() =>
+      Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               generatText(
                 text: AppLocalizations.of(context)!.helloIAm,
-                fontSize: size.width * 0.04,
+                fontSize: valueApp.getTitleSizeH1(),
                 textColor: ColorApp().whiteColor,
               ),
               generatText(
                 text: widget.dataModel.fullName,
-                fontSize: size.width * 0.08,
+                fontSize: valueApp.getTitleSizeH0(),
                 textColor: ColorApp().whiteColor,
               ),
               generatText(
                 text: widget.dataModel.descriptionMe,
-                fontSize: size.width * 0.014,
+                fontSize: valueApp.getSubtitleSizeH1(),
                 textColor: ColorApp().whiteColor,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: valueApp.getPaddingSize(16.0)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     OutlinedButtonWidget(
                       backgroundColor: ColorApp().PrimaryColor,
                       textColor: ColorApp().whiteColor,
-                      iconSize: size.width * 0.014,
+                      iconSize: valueApp.getButtonSize(),
                       icon: Icons.person,
-                      textSize: size.width * 0.014,
+                      textSize: valueApp.getButtonSize(),
                       text: AppLocalizations.of(context)!.aboutMe,
                       onPressed: () {
-                        print("Pressed");
                         widget.onItemTapped!(1);
                       },
                     ),
@@ -123,12 +134,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       textColor: ColorApp().whiteColor,
                       borderColor: ColorApp().PrimaryColor,
                       borderWidth: 1,
-                      iconSize: size.width * 0.014,
+                      iconSize: valueApp.getButtonSize(),
                       icon: Icons.remove_red_eye,
-                      textSize: size.width * 0.014,
+                      textSize: valueApp.getButtonSize(),
                       text: AppLocalizations.of(context)!.projects,
                       onPressed: () {
-                        print("Pressed");
                         widget.onItemTapped!(2);
                       },
                     ),
@@ -146,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
     required Color textColor,
   }) =>
       Padding(
-        padding: EdgeInsets.all((size.width + size.height) * 0.004),
+        padding: EdgeInsets.all(valueApp.getPaddingSize(2.0)),
         child: Container(
           width: size.width * 0.5,
           child: Text(

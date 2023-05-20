@@ -87,6 +87,7 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
                 HomeScreen(
                   height: 250,
                   width: 250,
+                  isTablet: true,
                   dataModel: widget.dataModel,
                   onItemTapped: (indexPage){
                     print("index$indexPage");

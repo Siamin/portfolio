@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/serviceModel.dart';
+import 'package:portfolio/valueApp.dart';
 
 class ServiceWidget extends StatefulWidget {
-  final bool isTablet;
-  final bool isDesktop;
+  final bool isPhone, isTablet, isDesktop;
   final List<ServiceModel> serviceModel;
 
   const ServiceWidget(
       {Key? key,
       this.isTablet = false,
       this.isDesktop = false,
+      this.isPhone = false,
       required this.serviceModel})
       : super(key: key);
 
@@ -19,76 +20,90 @@ class ServiceWidget extends StatefulWidget {
 }
 
 class _ServiceWidgetState extends State<ServiceWidget> {
-  late double sumScreen;
   late int divisionColum = 2;
+  late ValueApp valueApp;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    sumScreen =
-        (size.height + (widget.isTablet ? size.width * 0.3 : size.width));
-    divisionColum = widget.isDesktop ? 3 : 2;
+    valueApp = ValueApp(
+        size: size,
+        isPhone: widget.isPhone,
+        isDesktop: widget.isDesktop,
+        isTablet: widget.isTablet);
+    divisionColum = widget.isPhone ? 2 : 3;
 
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(valueApp.getPaddingSize(4)),
       child: GridView.builder(
         itemCount: widget.serviceModel.length,
         shrinkWrap: true,
         itemBuilder: (context, index) =>
             serviceBody(model: widget.serviceModel[index], number: index + 1),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
+          crossAxisCount: divisionColum,
         ),
       ),
     );
   }
 
   Widget serviceBody({required ServiceModel model, required int number}) =>
-      Padding(
-        padding: EdgeInsets.all(sumScreen * 0.002),
-        child: Card(
-          color: ColorApp().transparent,
-          shape: RoundedRectangleBorder(
-            side: BorderSide(color: model.getBorderColor(number: number), width: 2.5),
-            borderRadius: BorderRadius.circular(20.0), //<-- SEE HERE
-          ),
-          child: Container(
-            height: sumScreen * 0.15,
-            width: sumScreen * 0.15,
-            child: Padding(
-              padding: EdgeInsets.all(sumScreen * 0.008),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(sumScreen * 0.004),
-                    child: Image.asset(
-                      model.getPath(),
-                      height: sumScreen * 0.025,
-                      width: sumScreen * 0.025,
-                    ),
+      Wrap(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(valueApp.getPaddingSize(2)),
+            child: Card(
+              color: ColorApp().transparent,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(
+                  color: model.getBorderColor(number: number),
+                  width: 2.5,
+                ),
+                borderRadius: BorderRadius.circular(valueApp.getPaddingSize(4)), //<-- SEE HERE
+              ),
+              child: Container(
+                height: valueApp.getBoxSize(),
+                width: valueApp.getBoxSize(),
+                child: Padding(
+                  padding: EdgeInsets.all(valueApp.getPaddingSize(4)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(valueApp.getPaddingSize(4)),
+                        child: Image.asset(
+                          model.getPath(),
+                          height: valueApp.getImageSize(21),
+                          width: valueApp.getImageSize(21),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(valueApp.getPaddingSize(6)),
+                        child: Text(
+                          model.title,
+                          style: TextStyle(
+                            color: model.getTitleColor(number: number),
+                            fontSize: valueApp.getTitleSizeH3(),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(
+                          valueApp.getPaddingSize(1.5),
+                        ),
+                        child: Text(
+                          model.description,
+                          style: TextStyle(
+                              color: ColorApp().whiteColor,
+                              fontSize:valueApp.getSubtitleSizeH4()),
+                        ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(sumScreen * 0.006),
-                    child: Text(
-                      model.title,
-                      style: TextStyle(
-                          color: model.getTitleColor(number: number), fontSize: sumScreen * 0.0095),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(sumScreen * 0.006),
-                    child: Text(
-                      model.description,
-                      style: TextStyle(
-                          color: ColorApp().whiteColor,
-                          fontSize: sumScreen * 0.007),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
+        ],
       );
 }
