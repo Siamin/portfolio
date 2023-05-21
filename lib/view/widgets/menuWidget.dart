@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:portfolio/controllers/SharePreferencesController.dart';
 import 'package:portfolio/models/dataModel.dart';
 import 'package:portfolio/view/widgets/languageWidget.dart';
 
@@ -26,10 +27,17 @@ class _MenuWidgetState extends State<MenuWidget> {
   late double width;
   int flex = 1, _selectedIndex = 0;
   late Size size;
+  String selectLanguage = "fa";
+  SharePreferencesController spController = SharePreferencesController();
 
   @override
   void initState() {
     super.initState();
+    spController.getLanguage().then((lang) {
+      setState(() {
+        selectLanguage = lang;
+      });
+    });
   }
 
   @override
@@ -46,8 +54,9 @@ class _MenuWidgetState extends State<MenuWidget> {
       return tabletMenu();
     } else if (widget.isPhone) {
       return phoneMenu();
-    } else
+    } else {
       return Container();
+    }
   }
 
   Widget desktopMenu() => Column(
@@ -108,8 +117,9 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               Positioned(
                 bottom: 0,
-                right: 0,
-                child: !widget.isDesktop ? const LanguageWidget() : const Text(""),
+                right: selectLanguage=="fa"?20:0,
+                left: selectLanguage=="en"?20:0,
+                child: widget.isTablet ? LanguageWidget(isTablet: widget.isTablet,) : const Text(""),
               ),
               Center(
                 child: Padding(
@@ -206,6 +216,6 @@ class _MenuWidgetState extends State<MenuWidget> {
                     : ColorApp().whiteColor),
           ),
         ),
-        if (widget.isDesktop) const LanguageWidget()
+        if (widget.isDesktop)  LanguageWidget(isDesktop: widget.isDesktop,)
       ];
 }

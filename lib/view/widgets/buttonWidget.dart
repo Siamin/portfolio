@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/valueApp.dart';
 
 class ButtonWidget extends StatefulWidget {
   final Color backgroundColor, textColor;
@@ -26,25 +27,32 @@ class ButtonWidget extends StatefulWidget {
 }
 
 class _ButtonWidgetState extends State<ButtonWidget> {
+  late ValueApp valueApp;
+
   @override
   Widget build(BuildContext context) {
+    valueApp = ValueApp(size: MediaQuery.of(context).size);
     return Wrap(
       children: [
-        OutlinedButton(
-          onPressed: widget.onPressed,
-          child: Text(
-            widget.text,
-            style: TextStyle(
-              fontSize: widget.textSize,
-              color: widget.textColor,
+        Container(
+          height: valueApp.getHeightSize(),
+          width: valueApp.getWidthtSize(),
+          child: OutlinedButton(
+            onPressed: widget.onPressed,
+            style: OutlinedButton.styleFrom(
+              backgroundColor: widget.backgroundColor,
+              primary: widget.textColor,
+              side: BorderSide(
+                color: widget.borderColor,
+                width: widget.borderWidth!,
+              ),
             ),
-          ),
-          style: OutlinedButton.styleFrom(
-            backgroundColor: widget.backgroundColor,
-            primary: widget.textColor,
-            side: BorderSide(
-              color: widget.borderColor,
-              width: widget.borderWidth!,
+            child: Text(
+              widget.text,
+              style: TextStyle(
+                fontSize: widget.textSize,
+                color: widget.textColor,
+              ),
             ),
           ),
         )

@@ -56,7 +56,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
         child: Card(
           color: ColorApp().GaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(valueApp.getPaddingSize(6)),
+            borderRadius: BorderRadius.circular(valueApp.getPaddingSize(3)),
           ),
           child: Padding(
             padding: EdgeInsets.all(valueApp.getPaddingSize(2)),
@@ -114,7 +114,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
 
   getButtonBody(ProjectModel model) => [
         Padding(
-          padding: EdgeInsets.all(valueApp.getPaddingSize(0.08)),
+          padding: EdgeInsets.all(valueApp.getPaddingSize(0.009)),
           child: ButtonWidget(
             backgroundColor: ColorApp().PrimaryColor,
             textColor: ColorApp().whiteColor,
@@ -123,7 +123,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(valueApp.getPaddingSize(0.08)),
+          padding: EdgeInsets.all(valueApp.getPaddingSize(0.009)),
           child: ButtonWidget(
             backgroundColor: ColorApp().transparent,
             textColor: ColorApp().whiteColor,

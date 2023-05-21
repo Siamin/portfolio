@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/models/dataModel.dart';
+import 'package:portfolio/valueApp.dart';
 import 'package:portfolio/view/screens/aboutMeScreen.dart';
 import 'package:portfolio/view/screens/connectScreen.dart';
 import 'package:portfolio/view/screens/footerScreen.dart';
@@ -23,6 +24,7 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
   List<double> offsetIndexPages = [0, 1, 2.5, 3.3];
   double offsetPages = 0.0;
   int selectedIndex = 0;
+  late ValueApp valueApp;
 
   @override
   void initState() {
@@ -60,6 +62,7 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    valueApp = ValueApp(size: size, isTablet: true);
     offsetPages = ((size.height + size.width) * 0.35);
     return Scaffold(
       backgroundColor: ColorApp().SecondaryColor,
@@ -89,7 +92,7 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
                   width: 250,
                   isTablet: true,
                   dataModel: widget.dataModel,
-                  onItemTapped: (indexPage){
+                  onItemTapped: (indexPage) {
                     print("index$indexPage");
                     _scrollToOffset(offsetIndexPages[indexPage] * offsetPages);
                     setState(() {
@@ -97,12 +100,9 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
                     });
                   },
                 ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: AboutMeScreen(
-                    isTablet: true,
-                    dataModel: widget.dataModel,
-                  ),
+                AboutMeScreen(
+                  isTablet: true,
+                  dataModel: widget.dataModel,
                 ),
                 ProjectsScreen(
                   isTablet: true,

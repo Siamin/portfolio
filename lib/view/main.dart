@@ -18,6 +18,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
+
   static void setLocal(BuildContext context, Locale locale) {
     _MatrialState? state = context.findAncestorStateOfType<_MatrialState>();
     state?.setLocal(locale);
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Matrial extends StatefulWidget {
+
   const Matrial({Key? key}) : super(key: key);
 
   @override
@@ -36,13 +39,14 @@ class Matrial extends StatefulWidget {
 
 class _MatrialState extends State<Matrial> {
   Locale? _locale = Locale("fa");
+
   SharePreferencesController spController = SharePreferencesController();
   @override
   void initState() {
     super.initState();
     spController.getLanguage().then((lang) {
-      print("lang ${lang}");
       setState(() {
+
         _locale = Locale(lang);
       });
     });

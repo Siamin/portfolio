@@ -26,7 +26,6 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
   void initState() {
     super.initState();
     controller.addListener(() {
-      print("positions :${controller.page}");
       setState(() {
         selectedIndex = controller.page!.toInt();
       });
@@ -39,12 +38,12 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: ColorApp().SecondaryColor,
       appBar: AppBar(
         backgroundColor: ColorApp().DarkColor,
-        actions: [LanguageWidget()],
+        actions: const [LanguageWidget(isPhone: true,)],
         title: Text(
           widget.dataModel.fullName,
           style: TextStyle(

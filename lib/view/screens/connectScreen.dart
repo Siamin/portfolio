@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/colorApp.dart';
+import 'package:portfolio/controllers/SharePreferencesController.dart';
 import 'package:portfolio/models/socialmediaModel.dart';
+import 'package:portfolio/valueApp.dart';
 import 'package:portfolio/view/widgets/buttonWidget.dart';
 import 'package:portfolio/view/widgets/socialMediaWidget.dart';
 import 'package:portfolio/view/widgets/textWidget.dart';
@@ -24,20 +26,35 @@ class ConnectScreen extends StatefulWidget {
 }
 
 class _ConnectScreenState extends State<ConnectScreen> {
-  late Size size;
-  late double sumScreen;
+  late ValueApp valueApp;
+  SharePreferencesController spController = SharePreferencesController();
+  Alignment alignmentSendButton = Alignment.center;
+
+  @override
+  void initState() {
+    super.initState();
+    spController.getLanguage().then((lang) {
+      setState(() {
+        if (widget.isDesktop)
+          alignmentSendButton = (lang == "fa" ? Alignment.centerRight : Alignment.centerLeft);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
-    sumScreen =
-        (size.height + (widget.isTablet ? size.width * 0.3 : size.width));
+    valueApp = ValueApp(
+        size: MediaQuery.of(context).size,
+        isDesktop: widget.isDesktop,
+        isTablet: widget.isTablet,
+        isPhone: widget.isPhone);
+
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+      padding: EdgeInsets.symmetric(horizontal: valueApp.getPaddingSize(0.5)),
       child: Container(
         alignment: Alignment.center,
-        width: size.width * (widget.isTablet ? 0.75 : 1),
-        height: size.height * (widget.isPhone ? 1 : 0.6),
+        width: valueApp.size.width * (widget.isTablet ? 0.75 : 1),
+        height: valueApp.size.height * (widget.isPhone ? 1 : 0.75),
         child: widget.isDesktop ? getRowScreen() : getColumnScreen(),
       ),
     );
@@ -61,25 +78,25 @@ class _ConnectScreenState extends State<ConnectScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(valueApp.getPaddingSize(8)),
             child: TextWidget(
               text: AppLocalizations.of(context)!.connectTitle,
               textColor: ColorApp().PrimaryColor,
-              fontSize: sumScreen * (widget.isDesktop ? 0.02 : 0.023),
+              fontSize: valueApp.getTitleSizeH1(),
               textAlign: widget.isDesktop ? TextAlign.start : TextAlign.center,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(valueApp.getPaddingSize(8)),
             child: TextWidget(
               text: AppLocalizations.of(context)!.connectDescription,
               textColor: ColorApp().whiteColor,
-              fontSize: sumScreen * (widget.isDesktop ? 0.0095 : 0.01),
+              fontSize: valueApp.getSubtitleSizeH2(),
               textAlign: widget.isDesktop ? TextAlign.start : TextAlign.center,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(valueApp.getPaddingSize(8)),
             child: SocialMediaWidget(
               model: widget.socialMediaModel,
               isDesktop: widget.isDesktop,
@@ -98,25 +115,25 @@ class _ConnectScreenState extends State<ConnectScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(valueApp.getPaddingSize(12)),
                   child: TextWidget(
-                    text:AppLocalizations.of(context)!.connectTitleForm,
+                    text: AppLocalizations.of(context)!.connectTitleForm,
                     textColor: ColorApp().whiteColor,
-                    fontSize: sumScreen * (widget.isDesktop ? 0.0095 : 0.01),
+                    fontSize: valueApp.getSubtitleSizeH2(),
                     textAlign:
                         widget.isDesktop ? TextAlign.start : TextAlign.center,
                   ),
                 ),
                 TextFieldWidget(
-                  labelText:AppLocalizations.of(context)!.name,
-                  width: size.width * (widget.isDesktop ? 0.3 : 0.5),
+                  labelText: AppLocalizations.of(context)!.name,
+                  width: valueApp.getTextFieldSize(),
                   alignment: widget.isDesktop
                       ? Alignment.centerLeft
                       : Alignment.center,
                 ),
                 TextFieldWidget(
                   labelText: AppLocalizations.of(context)!.email,
-                  width: size.width * (widget.isDesktop ? 0.3 : 0.5),
+                  width: valueApp.getTextFieldSize(),
                   alignment: widget.isDesktop
                       ? Alignment.centerLeft
                       : Alignment.center,
@@ -124,24 +141,22 @@ class _ConnectScreenState extends State<ConnectScreen> {
                 TextFieldWidget(
                   labelText: AppLocalizations.of(context)!.message,
                   maxLines: 4,
-                  width: size.width * (widget.isDesktop ? 0.3 : 0.5),
+                  width: valueApp.getTextFieldSize(),
                   alignment: widget.isDesktop
                       ? Alignment.centerLeft
                       : Alignment.center,
                 ),
                 Align(
-                  alignment: widget.isDesktop
-                      ? Alignment.centerLeft
-                      : Alignment.center,
+                  alignment: alignmentSendButton,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(valueApp.getPaddingSize(8)),
                     child: ButtonWidget(
                       backgroundColor: ColorApp().PrimaryColor,
                       textColor: ColorApp().whiteColor,
                       textSize: 14,
                       text: AppLocalizations.of(context)!.send,
                       onPressed: () {
-                        print("send onpress");
+                        //send message for me
                       },
                     ),
                   ),

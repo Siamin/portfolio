@@ -56,7 +56,7 @@ class _ServiceWidgetState extends State<ServiceWidget> {
               color: ColorApp().transparent,
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: model.getBorderColor(number: number),
+                  color: model.getBorderColor(number: number,isPhone: widget.isPhone),
                   width: 2.5,
                 ),
                 borderRadius: BorderRadius.circular(valueApp.getPaddingSize(4)), //<-- SEE HERE
@@ -65,24 +65,24 @@ class _ServiceWidgetState extends State<ServiceWidget> {
                 height: valueApp.getBoxSize(),
                 width: valueApp.getBoxSize(),
                 child: Padding(
-                  padding: EdgeInsets.all(valueApp.getPaddingSize(4)),
+                  padding: EdgeInsets.all(valueApp.getPaddingSize(3)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(valueApp.getPaddingSize(4)),
+                        padding: EdgeInsets.all(valueApp.getPaddingSize(3)),
                         child: Image.asset(
                           model.getPath(),
-                          height: valueApp.getImageSize(21),
-                          width: valueApp.getImageSize(21),
+                          height: valueApp.getImageSize(18),
+                          width: valueApp.getImageSize(18),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(valueApp.getPaddingSize(6)),
+                        padding: EdgeInsets.all(valueApp.getPaddingSize(4)),
                         child: Text(
                           model.title,
                           style: TextStyle(
-                            color: model.getTitleColor(number: number),
+                            color: model.getTitleColor(number: number,isPhone: widget.isPhone),
                             fontSize: valueApp.getTitleSizeH3(),
                           ),
                         ),

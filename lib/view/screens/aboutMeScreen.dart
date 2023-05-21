@@ -38,7 +38,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
         isTablet: widget.isTablet);
 
     return Padding(
-      padding: EdgeInsets.only(top: valueApp.getPaddingSize((widget.isPhone ? 1 : 13))),
+      padding: EdgeInsets.only(top: valueApp.getPaddingSize((widget.isPhone ? 1 : 13)),right: valueApp.getPaddingSize(8),left: valueApp.getPaddingSize(2)),
       child: Container(
         width: size.width,
         // height: size.height,

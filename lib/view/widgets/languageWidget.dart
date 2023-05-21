@@ -3,10 +3,18 @@ import 'package:portfolio/colorApp.dart';
 import 'package:portfolio/controllers/SharePreferencesController.dart';
 import 'package:portfolio/models/languageModel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:portfolio/valueApp.dart';
 import 'package:portfolio/view/main.dart';
 
 class LanguageWidget extends StatefulWidget {
-  const LanguageWidget({Key? key}) : super(key: key);
+  final bool isDesktop, isTablet, isPhone;
+
+  const LanguageWidget({
+    Key? key,
+    this.isDesktop = false,
+    this.isTablet = false,
+    this.isPhone = false,
+  }) : super(key: key);
 
   @override
   State<LanguageWidget> createState() => _LanguageWidgetState();
@@ -16,6 +24,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
   late List<LanguageModel> languageModels;
   SharePreferencesController spController = SharePreferencesController();
   String selectLanguage = "fa";
+  late ValueApp valueApp;
 
   @override
   void initState() {
@@ -29,6 +38,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    valueApp = ValueApp(size: MediaQuery.of(context).size,isDesktop: widget.isDesktop,isPhone: widget.isPhone,isTablet: widget.isTablet);
     languageModels = [
       LanguageModel(
           title: AppLocalizations.of(context)!.english,
@@ -39,12 +49,14 @@ class _LanguageWidgetState extends State<LanguageWidget> {
           icon: "iran",
           type: "fa"),
     ];
+
     return DropdownButton<String>(
       underline: Container(),
-      borderRadius: BorderRadius.circular(19),
+      borderRadius: BorderRadius.circular(16),
       dropdownColor: ColorApp().PrimaryColor,
       icon: Icon(
         Icons.language,
+        size: 16,
         color: ColorApp().whiteColor,
       ),
       items: languageModels.map((LanguageModel model) {
@@ -57,7 +69,6 @@ class _LanguageWidgetState extends State<LanguageWidget> {
       }).toList(),
       value: selectLanguage,
       onChanged: (valChange) {
-        print("DropdownButton change : ${valChange}");
         if (valChange != null) {
           spController.setLanguage(valChange!);
           MyApp.setLocal(context, Locale(valChange!));
@@ -72,13 +83,15 @@ class _LanguageWidgetState extends State<LanguageWidget> {
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Image.asset(
               model.getPath(),
-              height: 24,
-              width: 24,
+              height: 16,
+              width: 16,
             ),
           ),
           Text(
             model.title,
-            style: TextStyle(color: ColorApp().whiteColor),
+            style: TextStyle(
+                color: ColorApp().whiteColor,
+                fontSize: valueApp.getTitleSizeH3()),
           ),
         ],
       );

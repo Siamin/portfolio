@@ -4,11 +4,12 @@ class ValueApp {
   final Size size;
   final bool isDesktop, isTablet, isPhone;
 
-  ValueApp(
-      {required this.size,
-      this.isDesktop = false,
-      this.isTablet = false,
-      this.isPhone = false});
+  ValueApp({
+    required this.size,
+    this.isDesktop = false,
+    this.isTablet = false,
+    this.isPhone = false,
+  });
 
   calScreen() => (size.height + (isTablet ? size.width * 0.3 : size.width));
 
@@ -38,10 +39,11 @@ class ValueApp {
 
     return 0.0;
   }
+
   getTitleSizeH3() {
-    if (isDesktop) return calScreen() * 0.009;
-    if (isTablet) return calScreen() * 0.007;
-    if (isPhone) return calScreen() * 0.0065;
+    if (isDesktop) return calScreen() * 0.008;
+    if (isTablet) return calScreen() * 0.014;
+    if (isPhone) return calScreen() * 0.01;
 
     return 0.0;
   }
@@ -84,10 +86,10 @@ class ValueApp {
   /**
    * Button size
    */
-  getButtonSize() {
-    if (isDesktop) return calScreen() * 0.01;
-    if (isTablet) return calScreen() * 0.015;
-    if (isPhone) return calScreen() * 0.0063;
+  getButtonSize({double resize = 1}) {
+    if (isDesktop) return calScreen() * (0.01 / resize);
+    if (isTablet) return calScreen() * (0.015 / resize);
+    if (isPhone) return calScreen() * (0.007 / resize);
 
     return 0.0;
   }
@@ -97,16 +99,43 @@ class ValueApp {
    */
 
   getPaddingSize(double padding) => calScreen() * (padding * 0.002);
-  getImageSize(double size){
+
+  getImageSize(double size) {
     if (isDesktop) return calScreen() * (size * 0.002);
-    if (isTablet) return calScreen() * (size * 0.0015);
+    if (isTablet) return calScreen() * (size * 0.0018);
     if (isPhone) return calScreen() * (size * 0.001);
   }
 
-  getBoxSize(){
+  getIconSize() {
+    if (isDesktop) return 24;
+    if (isTablet) return 18;
+    if (isPhone) return 16;
+  }
+
+  getBoxSize() {
     if (isDesktop) return calScreen() * 0.165;
     if (isTablet) return calScreen() * 0.15;
     if (isPhone) return calScreen() * 0.132;
+
+    return 0.0;
+  }
+
+  getWidthtSize() {
+    if (isDesktop) return size.width * 0.175;
+    if (isTablet) return size.width * 0.175;
+    if (isPhone) return size.width * 0.172;
+  }
+
+  getHeightSize() {
+    if (isDesktop) return size.height * 0.035;
+    if (isTablet) return size.height * 0.035;
+    if (isPhone) return size.height * 0.03;
+  }
+
+  getTextFieldSize() {
+    if (isDesktop) return size.width * 0.5;
+    if (isTablet) return size.width * 0.7;
+    if (isPhone) return size.width * 0.9;
 
     return 0.0;
   }
