@@ -57,12 +57,11 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
         controller: controller,
         children: [
           HomeScreen(
-            height: 200,
-            width: 200,
+            height: 150,
+            width: 150,
             isPhone: true,
             dataModel: widget.dataModel,
             onItemTapped: (indexPage){
-              print("index$indexPage");
               _gotPageByIndex(indexPage);
               setState(() {
                 selectedIndex = indexPage;
@@ -77,9 +76,13 @@ class _HomePhoneScreenState extends State<HomePhoneScreen> {
             isPhone: true,
             projectModel: widget.dataModel.featured,
           ),
-          ConnectScreen(
-            isPhone: true,
-            socialMediaModel: widget.dataModel.socialMedia,
+          ListView(
+            children: [
+              ConnectScreen(
+                isPhone: true,
+                socialMediaModel: widget.dataModel.socialMedia,
+              ),
+            ],
           ),
         ],
       ),

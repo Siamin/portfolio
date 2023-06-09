@@ -70,8 +70,8 @@ class _LanguageWidgetState extends State<LanguageWidget> {
       value: selectLanguage,
       onChanged: (valChange) {
         if (valChange != null) {
-          spController.setLanguage(valChange!);
-          MyApp.setLocal(context, Locale(valChange!));
+          spController.setLanguage(valChange);
+          MyApp.setLocal(context, Locale(valChange));
         }
       },
     );

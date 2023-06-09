@@ -15,11 +15,13 @@ class HomeScreen extends StatefulWidget {
 
   const HomeScreen({
     Key? key,
-    required this.height,
-    required this.width,
+    this.height = 1,
+    this.width = 1,
     this.isDesktop = false,
     required this.dataModel,
-    this.onItemTapped, this.isPhone = false, this.isTablet = false,
+    this.onItemTapped,
+    this.isPhone = false,
+    this.isTablet = false,
   }) : super(key: key);
 
   @override
@@ -33,18 +35,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery
-        .of(context)
-        .size;
-    valueApp = ValueApp(size: size,
+    size = MediaQuery.of(context).size;
+    valueApp = ValueApp(
+        size: size,
         isPhone: widget.isPhone,
         isDesktop: widget.isDesktop,
         isTablet: widget.isTablet);
     return widget.isDesktop ? desktopDesplay() : notDesktopDesplay();
   }
 
-  Widget desktopDesplay() =>
-      Wrap(
+  Widget desktopDesplay() => Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,16 +61,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       );
 
-  Widget notDesktopDesplay() =>
-      Column(
+  Widget notDesktopDesplay() => Column(
         children: [
           imageBody(),
           textBody(),
         ],
       );
 
-  List<Widget> body() =>
-      [
+  List<Widget> body() => [
         Expanded(
           flex: flex,
           child: textBody(),
@@ -81,8 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ];
 
-  Widget imageBody() =>
-      Center(
+  Widget imageBody() => Center(
         child: ImageWidget(
           pathAssets: "assets/images/my_image.png",
           height: widget.height,
@@ -92,8 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
 
-  Widget textBody() =>
-      Wrap(
+  Widget textBody() => Wrap(
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -114,7 +110,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 textColor: ColorApp().whiteColor,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: valueApp.getPaddingSize(16.0)),
+                padding: EdgeInsets.symmetric(
+                    horizontal: valueApp.getPaddingSize(16.0)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

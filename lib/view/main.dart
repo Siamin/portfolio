@@ -18,8 +18,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
-
   static void setLocal(BuildContext context, Locale locale) {
     _MatrialState? state = context.findAncestorStateOfType<_MatrialState>();
     state?.setLocal(locale);
@@ -46,7 +44,6 @@ class _MatrialState extends State<Matrial> {
     super.initState();
     spController.getLanguage().then((lang) {
       setState(() {
-
         _locale = Locale(lang);
       });
     });
@@ -87,7 +84,6 @@ class _MyPageState extends State<MyPage> {
   Future<void> getData() async {
     dataModel = await JsonController()
         .readDataJson(fileName: AppLocalizations.of(context)!.jsonFileName);
-
     return;
   }
 

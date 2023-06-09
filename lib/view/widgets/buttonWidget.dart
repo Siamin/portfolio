@@ -44,7 +44,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
               primary: widget.textColor,
               side: BorderSide(
                 color: widget.borderColor,
-                width: widget.borderWidth!,
+                width: widget.borderWidth,
               ),
             ),
             child: Text(

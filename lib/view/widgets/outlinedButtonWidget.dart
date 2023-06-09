@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/colorApp.dart';
-
 class OutlinedButtonWidget extends StatefulWidget {
   final Color backgroundColor, textColor;
   final Color borderColor;
@@ -34,10 +32,10 @@ class _OutlinedButtonWidgetState extends State<OutlinedButtonWidget> {
     return OutlinedButton.icon(
       style: OutlinedButton.styleFrom(
         backgroundColor: widget.backgroundColor,
-        primary: widget.textColor,
+        // primary: widget.textColor,
         side: BorderSide(
           color: widget.borderColor,
-          width: widget.borderWidth!,
+          width: widget.borderWidth,
         ),
       ),
       onPressed: () {
